@@ -21,30 +21,6 @@
 @include pickle;
 ```
 
-### Usage
-
-```scss
-/* breakpoints */
-@include pickle-respond('tablet-up') {
-    /* ... */
-}
-
-/* grid system */
-.container { @include pickle-container(); }
-.container .column { @include pickle-column(2/4); }
-.container .span { @include pickle-span(1/3); }
-
-/* typography */
-@include pickle-typo($font: 'Primary', $size: 'XL');
-
-/* colors */
-@include pickle-color('beige');
-@include pickle-bgcolor('beige');
-
-/* global vars */
-.classname { height: map-get($pickle-vars, 'header-height'); }
-```
-
 ### Advanced config
 
 The below code shows the default config. All parameters are optional.
@@ -105,6 +81,30 @@ $config: (
 @include pickle($config);
 ```
 
+### Usage
+
+```scss
+/* breakpoints */
+@include pickle-respond('tablet-up') {
+    /* ... */
+}
+
+/* grid system */
+.container { @include pickle-container(); }
+.container .column { @include pickle-column(2/4); }
+.container .span { @include pickle-span(1/3); }
+
+/* typography */
+@include pickle-typo($font: 'Primary', $size: 'XL');
+
+/* colors */
+@include pickle-color('beige');
+@include pickle-bgcolor('beige');
+
+/* global vars */
+.classname { height: map-get($pickle-vars, 'header-height'); }
+```
+
 ## FAQ
 
 ### Aren't breakpoints tied to specific devices bad practice?
@@ -113,7 +113,7 @@ According the [Sass guidelines](https://sass-guidelin.es/#responsive-web-design-
 
 **Pickle** takes a different stand on the question, as we believe ambiguity breeds confusion. A term like `medium` is too broad and can be interpreted in many different ways, while `tablet` is more clear and easy to remember. The idea is not about being 100% accurate across all devices, but to be as declarative as possible and easy to remember.
 
-Not happy with the default naming changing convention? Just use your own by updating the default `$breakpoints` config ;)
+Not happy with the default naming convention? Just use your own by updating the default `$breakpoints` config ;)
 
 ### What's the correct way to manage typography styles?
 
