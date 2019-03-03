@@ -107,11 +107,11 @@ $config: (
 
 ## FAQ
 
-### Aren't breakpoints tied to specific devices bad practice?
+### Aren't breakpoints tied to specific devices considered bad practice?
 
 According the [Sass guidelines](https://sass-guidelin.es/#responsive-web-design-and-breakpoints), media queries should not be tied to specific devices, and privilege names such as `medium` `large` `huge` rather than `tablet` `computer` `tv`.
 
-**Pickle** takes a different stand on the question, as we believe ambiguity breeds confusion. A term like `medium` is too broad and can be interpreted in many different ways, while `tablet` is more clear and easy to remember. The idea is not about being 100% accurate across all devices, but to be as declarative as possible and easy to remember.
+**Pickle** takes a different stand on the question, as we believe ambiguity breeds confusion. A term like `medium` is too broad and can be interpreted in many different ways, while `tablet` is more clear and easy to remember. The idea is not about being 100% accurate across all devices, but to be as declarative as possible and easy to use.
 
 Not happy with the default naming convention? Just use your own by updating the default `$breakpoints` config ;)
 
