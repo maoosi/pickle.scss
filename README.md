@@ -4,79 +4,29 @@
 
 ⚠️ Work in progress - Project just started
 
-## Setup
+## Features
 
-**Simple**
+- Consistant cross-browser default styling using [Sanitize.css](https://github.com/csstools/sanitize.css)
+- Basic wires theme for quick UI prototyping (can be disabled)
+- Smart grid system based on [Jeet](http://jeet.gs), a human-centered precision grid
+- Declaratives breakpoints system for handling media queries
+- Flexible typography setup with strong separation of concerns
+
+## Getting started
+
+### Installation
 
 ```scss
+@import '~/pickle/pickle';
 @include pickle;
 ```
 
-**Advanced**
-
-```scss
-/* default config */
-$config: (
-
-    // toggle wireframes
-    $wires: true,
-
-    // grid system
-    $grid: (
-        $gutter: 3,
-        $direction: LTR,
-        $max-width: 1440px
-    ),
-
-    // custom breakpoints
-    $breakpoints: (
-        'phone-only': (max-width: 599px),
-        'tablet-portrait-up': (min-width: 600px),
-        'tablet-up': (min-width: 900px),
-        'desktop-up': (min-width: 1200px),
-        'big-desktop-up': (min-width: 1800px)
-    ),
-
-    // colors
-    $colors: (
-        // 'beige': ($hex: '#f5f5dc')
-    ),
-
-    // custom fonts
-    $fonts: (
-        // 'Primary': (
-        //     $folder: './fonts',
-        //     $ext: 'ttf' 'woff2',
-        //     $family: #{'Helvetica', Arial, sans-serif},
-        //     $ratio: 1
-        // )
-    ),
-    
-    // custom sizes
-    $sizes: (
-        // 'XL': (
-        //     $default: 1.6rem,
-        //     $breakpoints: ('desktop-up': 2rem)
-        // )
-    ),
-
-    // variables
-    $vars: (
-        // 'header-height': 4rem
-    )
-
-);
-
-/* optional config */
-@include pickle($config);
-```
-
-## Usage
+### Usage
 
 ```scss
 /* breakpoints */
 @include pickle-respond('tablet-up') {
-    // ..
+    /* ... */
 }
 
 /* grid system */
@@ -93,6 +43,64 @@ $config: (
 
 /* global vars */
 .classname { height: map-get($pickle-vars, 'header-height'); }
+```
+
+### Advanced config
+
+```scss
+$config: (
+
+    /* toggle wireframes */
+    $wires: true,
+
+    /* adjust grid system */
+    $grid: (
+        $gutter: 3,
+        $direction: LTR,
+        $max-width: 1440px
+    ),
+
+    /* set custom breakpoints */
+    $breakpoints: (
+        'phone-only': (max-width: 599px),
+        'tablet-portrait-up': (min-width: 600px),
+        'tablet-up': (min-width: 900px),
+        'desktop-up': (min-width: 1200px),
+        'big-desktop-up': (min-width: 1800px)
+    ),
+
+    /* set project colors */
+    $colors: (
+        /* 'beige': ($hex: '#f5f5dc') */
+    ),
+
+    /* declare project fonts */
+    $fonts: (
+        /* 'Primary': (
+            $folder: './fonts',
+            $ext: 'ttf' 'woff2',
+            $family: #{'Helvetica', Arial, sans-serif},
+            $ratio: 1
+        ) */
+    ),
+    
+    /* set custom size groups */ 
+    $sizes: (
+        /* 'XL': (
+            $default: 1.6rem,
+            $breakpoints: ('desktop-up': 2rem)
+        ) */
+    ),
+
+    /* create global variables */
+    $vars: (
+        /* 'header-height': 4rem */
+    )
+
+);
+
+/* init pickle with config */
+@include pickle($config);
 ```
 
 ## FAQ
