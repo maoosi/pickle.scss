@@ -47,6 +47,8 @@
 
 ### Advanced config
 
+The below code shows the default config. All parameters are optional.
+
 ```scss
 $config: (
 
