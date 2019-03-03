@@ -17,7 +17,7 @@
 ### Installation
 
 ```scss
-@import '~/pickle/pickle';
+@import '~pickle.scss';
 @include pickle;
 ```
 
