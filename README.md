@@ -104,7 +104,51 @@ $config: (
 .classname { height: map-get($pickle-vars, 'header-height'); }
 ```
 
-## Grid system
+## FAQ
+
+### Aren't breakpoints tied to specific devices considered bad practice?
+
+According the [Sass guidelines](https://sass-guidelin.es/#responsive-web-design-and-breakpoints), media queries should not be tied to specific devices, and privilege names such as `medium` `large` `huge` rather than `tablet` `computer` `tv`.
+
+**Pickle** takes a different stand on the question, as we believe ambiguity breeds confusion. A term like `medium` is too broad and can be interpreted in many different ways, while `tablet` is more clear and easy to remember. The idea is not about being 100% accurate across all devices, but to be as declarative as possible and easy to use.
+
+Not happy with the default naming convention? Just use your own by updating the default `$breakpoints` config ;)
+
+### What's the correct way to manage typography styles?
+
+Separation of concerns is a developement phylosophy that we truly believe in, and it also applies to typography. With **Pickle**, we decided to propose an approach that make it really easy to maintain shared typography settings such as font family, or size groups that respond to different breakpoints, while giving freedom and flexibility for more specific rules.
+
+```scss
+.title {
+    @include pickle-typo($font: 'Primary', $size: 'XL');
+
+    // custom rules
+    @include pickle-color('beige');
+    text-decoration: underline;
+}
+
+.subtitle {
+    @include pickle-typo($font: 'Primary', $size: 'XS');
+}
+```
+
+And because we know that all fonts are designed differently, we've made it even easier to manage sizing differences across different font families.
+
+```scss
+$config: (
+    $fonts: (
+        'Primary': ($ratio: 1, /* ... */)
+        'Secondary': ($ratio: 1.2, /* ... */)
+    ),
+    $sizes: (
+        'M': ($default: 1.6rem)
+    )
+)
+```
+
+Using the above config, `@include pickle-typo($font: 'Primary', $size: 'M');` output size is equal to `1.6rem`, while `$font: 'Secondary'` is equal to `1.92rem`.
+
+### How to use the Grid system?
 
 **Pickle** act as flavoured wrapper around the original [Jeet](https://github.com/mojotech/jeet) API, a human-centered precision grid. For more details on supported parameters for each of the below mixins, please refer to [Jeet API docs](https://github.com/mojotech/jeet/blob/master/docs/api.md).
 
@@ -149,48 +193,3 @@ $config: (
     pickle-clearfix(); */
 @include pickle-clearfix;
 ```
-
-
-## FAQ
-
-### Aren't breakpoints tied to specific devices considered bad practice?
-
-According the [Sass guidelines](https://sass-guidelin.es/#responsive-web-design-and-breakpoints), media queries should not be tied to specific devices, and privilege names such as `medium` `large` `huge` rather than `tablet` `computer` `tv`.
-
-**Pickle** takes a different stand on the question, as we believe ambiguity breeds confusion. A term like `medium` is too broad and can be interpreted in many different ways, while `tablet` is more clear and easy to remember. The idea is not about being 100% accurate across all devices, but to be as declarative as possible and easy to use.
-
-Not happy with the default naming convention? Just use your own by updating the default `$breakpoints` config ;)
-
-### What's the correct way to manage typography styles?
-
-Separation of concerns is a developement phylosophy that we truly believe in, and it also applies to typography. With **Pickle**, we decided to propose an approach that make it really easy to maintain shared typography settings such as font family, or size groups that respond to different breakpoints, while giving freedom and flexibility for more specific rules.
-
-```scss
-.title {
-    @include pickle-typo($font: 'Primary', $size: 'XL');
-
-    // custom rules
-    @include pickle-color('beige');
-    text-decoration: underline;
-}
-
-.subtitle {
-    @include pickle-typo($font: 'Primary', $size: 'XS');
-}
-```
-
-And because we know that all fonts are designed differently, we've made it even easier to manage sizing differences across different font families.
-
-```scss
-$config: (
-    $fonts: (
-        'Primary': ($ratio: 1, /* ... */)
-        'Secondary': ($ratio: 1.2, /* ... */)
-    ),
-    $sizes: (
-        'M': ($default: 1.6rem)
-    )
-)
-```
-
-Using the above config, `@include pickle-typo($font: 'Primary', $size: 'M');` output size is equal to `1.6rem`, while `$font: 'Secondary'` is equal to `1.92rem`.
