@@ -106,9 +106,7 @@ $config: (
 
 ## Grid system
 
-Smart grid system based on [Jeet](https://github.com/mojotech/jeet), a human-centered precision grid.
-
-**Pickle** act as flavoured wrapper around the original Jeet API. For more details on supported parameters for each of the below mixins, please refer to [Jeet API docs](https://github.com/mojotech/jeet/blob/master/docs/api.md).
+**Pickle** act as flavoured wrapper around the original [Jeet](https://github.com/mojotech/jeet) API, a human-centered precision grid. For more details on supported parameters for each of the below mixins, please refer to [Jeet API docs](https://github.com/mojotech/jeet/blob/master/docs/api.md).
 
 ```scss
 /*  Container
