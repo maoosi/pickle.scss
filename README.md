@@ -137,11 +137,11 @@ And because we know that all fonts are designed differently, we've made it even 
 ```scss
 $config: (
     $fonts: (
-        'Primary': ($ratio: 1, /* ... */)
-        'Secondary': ($ratio: 1.2, /* ... */)
+        'Primary': (ratio: 1, /* ... */)
+        'Secondary': (ratio: 1.2, /* ... */)
     ),
     $sizes: (
-        'M': ($default: 1.6rem)
+        'M': (default: 1.6rem)
     )
 )
 ```
