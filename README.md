@@ -148,7 +148,7 @@ $config: (
 
 Using the above config, `@include pickle-typo($font: 'Primary', $size: 'M');` output size is equal to `1.6rem`, while `$font: 'Secondary'` is equal to `1.92rem`.
 
-### How to use the Grid system?
+### How to use pickle grid system?
 
 **Pickle** act as flavoured wrapper around the original [Jeet](https://github.com/mojotech/jeet) API, a human-centered precision grid. For more details on supported parameters for each of the below mixins, please refer to [Jeet API docs](https://github.com/mojotech/jeet/blob/master/docs/api.md).
 
