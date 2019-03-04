@@ -6,11 +6,11 @@
 
 ## Features
 
-- Consistant cross-browser default styling using [Sanitize.css](https://github.com/csstools/sanitize.css)
-- Basic wires theme for quick UI prototyping (can be disabled)
-- Smart grid system based on [Jeet](http://jeet.gs), a human-centered precision grid
-- Declaratives breakpoints system for handling media queries
-- Flexible typography setup with strong separation of concerns
+- Consistant cross-browser default styling using [Sanitize.css](https://github.com/csstools/sanitize.css).
+- Basic wires theme for quick UI prototyping (can be disabled).
+- Smart grid system based on [Jeet](https://github.com/mojotech/jeet), a human-centered precision grid.
+- Declaratives breakpoints system for handling media queries.
+- Flexible typography setup with strong separation of concerns.
 
 ## Getting started
 
@@ -92,7 +92,6 @@ $config: (
 /* grid system */
 .container { @include pickle-container(); }
 .container .column { @include pickle-column(2/4); }
-.container .span { @include pickle-span(1/3); }
 
 /* typography */
 @include pickle-typo($font: 'Primary', $size: 'XL');
@@ -104,6 +103,55 @@ $config: (
 /* global vars */
 .classname { height: map-get($pickle-vars, 'header-height'); }
 ```
+
+## Grid system
+
+Smart grid system based on [Jeet](https://github.com/mojotech/jeet), a human-centered precision grid.
+
+**Pickle** act as flavoured wrapper around the original Jeet API. For more details on supported parameters for each of the below mixins, please refer to [Jeet API docs](https://github.com/mojotech/jeet/blob/master/docs/api.md).
+
+```scss
+/*  Container
+    pickle-container(); */
+@include pickle-container;
+
+/*  Column with gutter
+    pickle-column($ratios: 1, $offset: 0, $cycle: 0); */
+@include pickle-column(2/4);
+
+/*  Column without gutter
+    pickle-span($ratio: 1, $offset: 0, $cycle: 0); */
+@include pickle-span(2/4, $cycle: 4);
+
+/*  Move columns/span, works similar to offset or push/pull
+    pickle-move($ratios: 0, $col-or-span: column); */
+@include pickle-move(-1/3);
+
+/*  Disable source ordering setup previously
+    pickle-unmove(); */
+@include pickle-unmove;
+
+/*  Center containers
+    pickle-center($max-width: map-get($pickle-grid, 'max-width'), $pad: 0); */
+@include pickle-center(420px);
+
+/*  Reset styles associater with pickle-center()
+    pickle-uncenter(); */
+@include pickle-uncenter;
+
+/*  Stack elements on top of each other
+    pickle-stack($pad: 0, $align: false); */
+@include pickle-stack;
+
+/*  Cancel stack()
+    pickle-unstack(); */
+@include pickle-unstack;
+
+/*  A simple/kinda-modern clearfix
+    pickle-clearfix(); */
+@include pickle-clearfix;
+```
+
 
 ## FAQ
 
