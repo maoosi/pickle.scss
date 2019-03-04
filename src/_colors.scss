@@ -1,0 +1,28 @@
+
+/* ===============
+  🥒 Pickle Colors
+=============== */
+
+@mixin pickle-color($color) {
+    $_color: map-get($pickle-colors, $color);
+
+    @if $_color {
+        color: $_color;
+    }
+    
+    @else {
+        @include pickle-error('No color found with name `#{$color}`');
+    }
+};
+
+@mixin pickle-bgcolor($color) {
+    $_color: map-get($pickle-colors, $color);
+
+    @if $_color {
+        background-color: $_color;
+    }
+    
+    @else {
+        @include pickle-error('No bgcolor found with name `#{$color}`');
+    }
+};

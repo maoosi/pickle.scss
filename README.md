@@ -17,7 +17,7 @@
 ### Installation
 
 ```scss
-@import '~pickle.scss';
+@import '~pickle';
 @include pickle;
 ```
 
@@ -29,13 +29,13 @@ The below code shows the default config. All parameters are optional.
 $config: (
 
     /* toggle wireframes */
-    $wires: true,
+    $wires: false,
 
     /* adjust grid system */
     $grid: (
-        $gutter: 3,
-        $direction: LTR,
-        $max-width: 1440px
+        gutter: 3,
+        direction: LTR,
+        max-width: 1440px
     ),
 
     /* set custom breakpoints */
@@ -49,24 +49,24 @@ $config: (
 
     /* set project colors */
     $colors: (
-        /* 'beige': ($hex: '#f5f5dc') */
+        /* 'beige': #f5f5dc */
     ),
 
     /* declare project fonts */
     $fonts: (
         /* 'Primary': (
-            $folder: './fonts',
-            $ext: 'ttf' 'woff2',
-            $family: #{'Helvetica', Arial, sans-serif},
-            $ratio: 1
+            folder: './fonts',
+            ext: 'ttf' 'woff2',
+            family: #{'Helvetica', Arial, sans-serif},
+            ratio: 1
         ) */
     ),
     
     /* set custom size groups */ 
     $sizes: (
         /* 'XL': (
-            $default: 1.6rem,
-            $breakpoints: ('desktop-up': 2rem)
+            default: 1.6rem,
+            breakpoints: ('desktop-up': 2rem)
         ) */
     ),
 

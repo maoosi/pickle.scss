@@ -1,0 +1,40 @@
+
+/* ===============
+  🥒 Pickle
+=============== */
+
+@import '../node_modules/sanitize.css/sanitize.css';
+
+@import 'utils';
+@import 'grid';
+@import 'breakpoints';
+@import 'colors';
+
+@mixin pickle(
+    $wires: false,
+    $grid: (),
+    $breakpoints: (),
+    $colors: (),
+    $fonts: (),
+    $sizes: (),
+    $vars: ()
+) {
+    $pickle-wires: $wires !global;
+    $pickle-colors: $colors !global;
+    $pickle-fonts: $fonts !global;
+    $pickle-sizes: $sizes !global;
+    $pickle-vars: $vars !global;
+
+    $pickle-grid:extend(
+        (gutter: 3, direction: LTR, max-width: 1440px),
+        $grid
+    ) !global;
+    
+    $pickle-breakpoints:extend((
+        'phone-only': (max-width: 599px),
+        'tablet-portrait-up': (min-width: 600px),
+        'tablet-up': (min-width: 900px),
+        'desktop-up': (min-width: 1200px),
+        'big-desktop-up': (min-width: 1800px)
+    ), $breakpoints) !global;
+}

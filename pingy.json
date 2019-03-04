@@ -1,0 +1,7 @@
+{
+	"name": "pickle",
+	"minify": false,
+	"compile": true,
+	"exclusions": [],
+	"port": 62494
+}

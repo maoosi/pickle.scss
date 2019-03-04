@@ -1,0 +1,13 @@
+@import 'src/pickle';
+
+@include pickle(
+    $colors: (
+        'red': red
+    )
+);
+
+body {
+    @include pickle-respond('tablet-up') {
+        @include pickle-bgcolor('red');
+    }
+}

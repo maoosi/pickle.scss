@@ -1,0 +1,13 @@
+{
+	"dependencies": {
+		"jeet": "^7.2.0",
+		"sanitize.css": "^8.0.0"
+	},
+	"devDependencies": {
+		"node-sass": "^4",
+		"@pingy/cli": "^0.13.0"
+	},
+	"scripts": {
+		"playground": "pingy dev"
+	}
+}
