@@ -5,10 +5,10 @@
 
 @import '../node_modules/sanitize.css/sanitize.css';
 
-@import 'utils';
-@import 'grid';
-@import 'breakpoints';
-@import 'colors';
+@import 'toolkit/utils';
+@import 'toolkit/grid';
+@import 'toolkit/breakpoints';
+@import 'toolkit/colors';
 
 @mixin pickle(
     $wires: false,

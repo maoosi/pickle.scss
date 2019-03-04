@@ -3,7 +3,7 @@
   🥒 Pickle Playground
 =============== */
 
-@import 'src/pickle';
+@import '../pickle';
 
 @include pickle(
     $colors: (

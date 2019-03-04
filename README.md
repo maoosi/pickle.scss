@@ -193,3 +193,16 @@ Using the above config, `@include pickle-typo($font: 'Primary', $size: 'M');` ou
     pickle-clearfix(); */
 @include pickle-clearfix;
 ```
+
+## Contributing
+
+```bash
+# install parcel globally
+npm install -g parcel-bundler
+
+# install dependencies
+yarn install
+
+# run the playground
+yarn playground
+```

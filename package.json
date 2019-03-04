@@ -3,11 +3,10 @@
 		"jeet": "^7.2.0",
 		"sanitize.css": "^8.0.0"
 	},
-	"devDependencies": {
-		"node-sass": "^4",
-		"@pingy/cli": "^0.13.0"
-	},
 	"scripts": {
-		"playground": "pingy dev"
+		"playground": "parcel playground/index.html --cache-dir playground/.tmp/cache --out-dir playground/.tmp/output --open"
+	},
+	"devDependencies": {
+		"sass": "^1.17.2"
 	}
 }
