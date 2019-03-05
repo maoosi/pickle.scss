@@ -52,29 +52,49 @@ $config: (
 
     /* set project colors */
     $colors: (
-        /* 'beige': #f5f5dc */
+        /*
+        Empty by default, example:
+        ---
+
+        'beige': #f5f5dc
+        */
     ),
 
     /* declare project fonts */
     $fonts: (
-        /* 'Primary': (
+        /*
+        Empty by default, example:
+        ---
+
+        'Primary': (
             files: './fonts/Helvetica.ttf' './fonts/Helvetica.woff2',
             family: #{'Helvetica', Arial, sans-serif},
             ratio: 1
-        ) */
+        )
+        */
     ),
     
     /* set custom size groups */ 
     $sizes: (
-        /* 'XL': (
+        /*
+        Empty by default, example:
+        ---
+        
+        'XL': (
             base: 1.6rem,
             breakpoints: ('desktop-up': 2rem)
-        ) */
+        )
+        */
     ),
 
     /* create global variables */
     $vars: (
-        /* 'header-height': 4rem */
+        /*
+        Empty by default, example:
+        ---
+
+        'header-height': 4rem
+        */
     )
 
 );
