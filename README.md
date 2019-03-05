@@ -2,7 +2,10 @@
 
 > 🥒 Minimalist and opinionated Sass toolkit.
 
-**⚠️ Work in progress ⚠️**
+## ⚠️ Work in progress
+
+- [ ] Create basic wires theme for quick UI prototyping
+- [ ] Publish on npm / yarn
 
 ## Features
 
@@ -11,11 +14,6 @@
 - Smart grid system based on [Jeet](https://github.com/mojotech/jeet), a human-centered precision grid.
 - Declaratives breakpoints system for handling media queries.
 - Flexible typography setup with strong separation of concerns.
-
-## Roadmap
-
-- [ ] Create basic wires theme for quick UI prototyping
-- [ ] Publish on npm / yarn
 
 ## Getting started
 
