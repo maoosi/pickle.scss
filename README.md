@@ -4,7 +4,6 @@
 
 ## ⚠️ Work in progress
 
-- [ ] Implement fonts ratio parameter
 - [ ] Create basic wires theme for quick UI prototyping
 - [ ] Publish on npm / yarn
 
