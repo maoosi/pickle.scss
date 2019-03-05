@@ -1,6 +1,5 @@
-
 /* ===============
-  🥒 Pickle
+  🥒 Pickle.scss
 =============== */
 
 @import '../node_modules/sanitize.css/sanitize.css';
@@ -20,7 +19,6 @@ $pickle-breakpoints: null;
 @import 'toolkit/fonts';
 @import 'toolkit/typography';
 
-
 @mixin pickle(
     $wires: false,
     $grid: (),
@@ -37,7 +35,7 @@ $pickle-breakpoints: null;
     $pickle-vars: $vars !global;
 
     $pickle-grid:_pickle-extend(
-        (gutter: 3, direction: LTR, max-width: 1440px),
+        (gutter: 3, layout-direction: LTR, max-width: 1440px),
         $grid
     ) !global;
     
@@ -49,5 +47,6 @@ $pickle-breakpoints: null;
         'big-desktop-up': (min-width: 1800px)
     ), $breakpoints) !global;
 
+    @include _pickle-grid;
     @include _pickle-fonts;
 }

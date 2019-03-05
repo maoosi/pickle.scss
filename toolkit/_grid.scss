@@ -1,11 +1,12 @@
-
-/* ===============
-  🥒 Pickle Grid
-=============== */
-
 @import 'node_modules/jeet/jeet';
 
-@mixin pickle-container($args...) { @include container($args...); }
+@mixin _pickle-grid {
+    $jeet:_pickle-extend(
+        $jeet,
+        $pickle-grid
+    ) !global;
+};
+
 @mixin pickle-column($args...) { @include column($args...); }
 @mixin pickle-column-width($args...) { @include column-width($args...); }
 @mixin pickle-column-gutter($args...) { @include column-gutter($args...); }

@@ -4,7 +4,6 @@
 
 ## ⚠️ Work in progress
 
-- [ ] Implement global grid parameters (override Jeet settings)
 - [ ] Implement fonts ratio parameter
 - [ ] Create basic wires theme for quick UI prototyping
 - [ ] Publish on npm / yarn
@@ -39,7 +38,7 @@ $config: (
     /* adjust grid system */
     $grid: (
         gutter: 3,
-        direction: LTR,
+        layout-direction: LTR,
         max-width: 1440px
     ),
 
@@ -157,10 +156,6 @@ Using the above config, `@include pickle-typo($font: 'Primary', $size: 'M');` ou
 **Pickle** act as flavoured wrapper around the original [Jeet](https://github.com/mojotech/jeet) API, a human-centered precision grid. For more details on supported parameters for each of the below mixins, please refer to [Jeet API docs](https://github.com/mojotech/jeet/blob/master/docs/api.md).
 
 ```scss
-/*  Container
-    pickle-container(); */
-@include pickle-container;
-
 /*  Column with gutter
     pickle-column($ratios: 1, $offset: 0, $cycle: 0); */
 @include pickle-column(2/4);

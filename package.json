@@ -7,6 +7,7 @@
 		"playground": "parcel playground/index.html --cache-dir playground/.tmp/cache --out-dir playground/.tmp/output --open"
 	},
 	"devDependencies": {
+		"parcel-bundler": "^1.11.0",
 		"sass": "^1.17.2"
 	}
 }

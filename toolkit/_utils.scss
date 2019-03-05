@@ -1,7 +1,3 @@
-/* ===============
-  🥒 Pickle Utils
-=============== */
-
 @function _pickle-extend($obj, $ext-obj) {
     @return map-merge($obj, $ext-obj);
 }

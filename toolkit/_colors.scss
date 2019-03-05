@@ -1,8 +1,3 @@
-
-/* ===============
-  🥒 Pickle Colors
-=============== */
-
 @mixin pickle-color($color) {
     @if map-has-key($pickle-colors, $color) {
         color: map-get($pickle-colors, $color);
