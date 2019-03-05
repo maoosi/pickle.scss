@@ -2,7 +2,14 @@
 
 > Minimalist and opinionated Sass toolkit.
 
-⚠️ Work in progress - Project just started
+## ⚠️ Work in progress
+
+**Roadmap:**
+
+[ ] Implement global grid parameters (override Jeet settings)
+[ ] Implement fonts ratio parameter
+[ ] Create basic wires theme for quick UI prototyping
+[ ] Publish on npm / yarn
 
 ## Features
 
@@ -140,7 +147,7 @@ $config: (
         'Secondary': (ratio: 1.2, /* ... */)
     ),
     $sizes: (
-        'M': (default: 1.6rem)
+        'M': (base: 1.6rem)
     )
 )
 ```
@@ -205,3 +212,5 @@ yarn install
 # run the playground
 yarn playground
 ```
+
+**Note:** Parcel will only watch changes applied to `playground/playground.scss`.
