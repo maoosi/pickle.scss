@@ -2,11 +2,6 @@
 
 > 🥒 Minimalist and opinionated Sass toolkit.
 
-## ⚠️ Work in progress
-
-- [ ] Create basic wires theme for quick UI prototyping
-- [ ] Publish on npm / yarn
-
 ## Features
 
 - Consistant cross-browser default styling using [Sanitize.css](https://github.com/csstools/sanitize.css).
@@ -14,6 +9,13 @@
 - Smart grid system based on [Jeet](https://github.com/mojotech/jeet), a human-centered precision grid.
 - Declaratives breakpoints system for handling media queries.
 - Flexible typography setup with strong separation of concerns.
+
+## Roadmap
+
+⚠️ Work in progress:
+
+- [ ] Create basic wires theme for quick UI prototyping
+- [ ] Publish on npm / yarn
 
 ## Getting started
 
@@ -31,7 +33,7 @@ The below code shows the default config. All parameters are optional.
 ```scss
 $config: (
 
-    /* toggle wireframes */
+    /* toggle wireframes (WIP feature, not available yet) */
     $wires: false,
 
     /* adjust grid system */
