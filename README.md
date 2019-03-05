@@ -2,6 +2,8 @@
 
 > 🥒 Minimalist and opinionated Sass toolkit.
 
+**⚠️ Work in progress ⚠️**
+
 ## Features
 
 - Consistant cross-browser default styling using [Sanitize.css](https://github.com/csstools/sanitize.css).
@@ -11,8 +13,6 @@
 - Flexible typography setup with strong separation of concerns.
 
 ## Roadmap
-
-⚠️ Work in progress:
 
 - [ ] Create basic wires theme for quick UI prototyping
 - [ ] Publish on npm / yarn
