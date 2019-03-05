@@ -144,7 +144,7 @@ Separation of concerns is a developement phylosophy that we truly believe in, an
 .title {
     @include pickle-typo($font: 'Primary', $size: 'XL');
 
-    // custom rules
+    /* custom rules */
     @include pickle-color('beige');
     text-decoration: underline;
 }
