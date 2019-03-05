@@ -4,47 +4,35 @@
 =============== */
 
 @mixin pickle-typo($font, $size) {
-    @if not map-has-key($pickle-fonts, font) {
+    @if not map-has-key($pickle-fonts, $font) {
         @include _pickle-error('No font found with name `#{$font}`');
     }
-    @if not map-has-key($pickle-fonts, size) {
-        @include _pickle-error('No font found with size `#{$size}`');
+    @if not map-has-key($pickle-sizes, $size) {
+        @include _pickle-error('No size found with name `#{$size}`');
     }
-};
 
-@mixin _pickle-fonts {
-    @each $name, $font in $pickle-fonts {
-        @if not map-has-key($font, files) {
-            @include _pickle-error('Font `#{$font}` is missing `files` parameter');
-        }
-        @if not map-has-key($font, family) {
-            @include _pickle-error('Font `#{$font}` is missing `family` parameter');
-        }
+    $font: map-get($pickle-fonts, $font);
+    $size: map-get($pickle-sizes, $size);
 
-        $files: map-get($font, files);
-        $src: 'local("?")';
+    @if not map-has-key($font, family) {
+        @include _pickle-error('`family` parameter missing from font `#{$font}`');
+    }
+    @if not map-has-key($size, base) {
+        @include _pickle-error('`base` parameter missing from size `#{$size}`');
+    }
 
-        @if map-has-key($files, eot) {
-            $src: ', #{$src} url("#{map-get($files, 'eot')}") format("eot")';
-        }
-        @if map-has-key($files, woff) {
-            $src: ', #{$src} url("#{map-get($files, 'woff')}") format("woff")';
-        }
-        @if map-has-key($files, woff2) {
-            $src: ', #{$src} url("#{map-get($files, 'woff2')}") format("woff2")';
-        }
-        @if map-has-key($files, ttf) {
-            $src: ', #{$src} url("#{map-get($files, 'ttf')}") format("ttf")';
-        }
-        @if map-has-key($files, svg) {
-            $src: ', #{$src} url("#{map-get($files, 'svg')}") format("svg")';
-        }
+    $family: map-get($font, family);
+    $size-base: map-get($size, base);
+    $size-breakpoints: map-get($size, breakpoints);
 
-        @font-face {
-            font-family: map-get($font, family);
-            src: $src;
-            font-weight: normal;
-            font-style: normal;
+    font-family: $family;
+    font-size: $size-base;
+
+    @if $size-breakpoints {
+        @each $breakpoint, $font-size in $size-breakpoints {
+            @include pickle-respond($breakpoint) {
+                font-size: $font-size;
+            }
         }
     }
 };

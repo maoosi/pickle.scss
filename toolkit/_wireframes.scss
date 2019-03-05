@@ -1,3 +1,10 @@
-a:not([class]) {
-    text-decoration: underline;
+
+/* ===============
+  🥒 Pickle Wireframes
+=============== */
+
+@mixin _pickle-wires {
+    a:not([class]) {
+        text-decoration: underline;
+    }
 }

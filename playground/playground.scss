@@ -10,11 +10,15 @@
         'red': red,
         'yellow': yellow
     ),
+    $sizes: (
+        'XL': (
+            base: 1.6rem,
+            breakpoints: ('tablet-up': 5rem)
+        )
+    ),
     $fonts: (
         'Primary': (
-            files: (
-                ttf: './Oswald-Regular.ttf'
-            ),
+            files: './Oswald-Regular.ttf',
             family: #{'Oswald', Arial, sans-serif}
         )
     )

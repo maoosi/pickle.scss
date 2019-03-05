@@ -1,4 +1,4 @@
-# 🥒 Pickle
+# 🥒 Pickle.scss
 
 > Minimalist and opinionated Sass toolkit.
 
@@ -17,7 +17,7 @@
 ### Installation
 
 ```scss
-@import '~pickle';
+@import '~pickle.scss/pickle';
 @include pickle;
 ```
 
@@ -55,8 +55,7 @@ $config: (
     /* declare project fonts */
     $fonts: (
         /* 'Primary': (
-            folder: './fonts',
-            ext: 'ttf' 'woff2',
+            files: './fonts/Helvetica.ttf' './fonts/Helvetica.woff2',
             family: #{'Helvetica', Arial, sans-serif},
             ratio: 1
         ) */
@@ -65,7 +64,7 @@ $config: (
     /* set custom size groups */ 
     $sizes: (
         /* 'XL': (
-            default: 1.6rem,
+            base: 1.6rem,
             breakpoints: ('desktop-up': 2rem)
         ) */
     ),
