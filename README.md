@@ -4,12 +4,10 @@
 
 ## ⚠️ Work in progress
 
-**Roadmap:**
-
-[ ] Implement global grid parameters (override Jeet settings)
-[ ] Implement fonts ratio parameter
-[ ] Create basic wires theme for quick UI prototyping
-[ ] Publish on npm / yarn
+- [ ] Implement global grid parameters (override Jeet settings)
+- [ ] Implement fonts ratio parameter
+- [ ] Create basic wires theme for quick UI prototyping
+- [ ] Publish on npm / yarn
 
 ## Features
 
