@@ -15,8 +15,7 @@
             @content;
         }
     }
-
     @else {
-        @include pickle-error('No breakpoint found with name `#{$breakpoint}`');
+        @include _pickle-error('No breakpoint found with name `#{$breakpoint}`');
     }
 }

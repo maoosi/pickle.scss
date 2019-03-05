@@ -9,6 +9,8 @@
 @import 'toolkit/grid';
 @import 'toolkit/breakpoints';
 @import 'toolkit/colors';
+@import 'toolkit/typography';
+
 
 @mixin pickle(
     $wires: false,
@@ -25,16 +27,18 @@
     $pickle-sizes: $sizes !global;
     $pickle-vars: $vars !global;
 
-    $pickle-grid:extend(
+    $pickle-grid:_pickle-extend(
         (gutter: 3, direction: LTR, max-width: 1440px),
         $grid
     ) !global;
     
-    $pickle-breakpoints:extend((
+    $pickle-breakpoints:_pickle-extend((
         'phone-only': (max-width: 599px),
         'tablet-portrait-up': (min-width: 600px),
         'tablet-up': (min-width: 900px),
         'desktop-up': (min-width: 1200px),
         'big-desktop-up': (min-width: 1800px)
     ), $breakpoints) !global;
+
+    @include _pickle-fonts;
 }

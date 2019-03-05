@@ -1,12 +1,11 @@
-
 /* ===============
   🥒 Pickle Utils
 =============== */
 
-@function extend($obj, $ext-obj) {
+@function _pickle-extend($obj, $ext-obj) {
     @return map-merge($obj, $ext-obj);
 }
 
-@mixin pickle-error($error) {
+@mixin _pickle-error($error) {
     @error '[Pickle.scss] #{$error}. Please check https://github.com/kuizto/pickle.';
 }

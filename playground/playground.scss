@@ -7,12 +7,27 @@
 
 @include pickle(
     $colors: (
-        'red': red
+        'red': red,
+        'yellow': yellow
+    ),
+    $fonts: (
+        'Primary': (
+            files: (
+                ttf: './Oswald-Regular.ttf'
+            ),
+            family: #{'Oswald', Arial, sans-serif}
+        )
     )
 );
 
 body {
     @include pickle-respond('tablet-up') {
         @include pickle-bgcolor('red');
+    }
+
+    .container {
+        @include pickle-center(500px);
+        @include pickle-bgcolor('yellow');
+        @include pickle-typo($font: 'Primary', $size: 'XL');
     }
 }

@@ -4,25 +4,19 @@
 =============== */
 
 @mixin pickle-color($color) {
-    $_color: map-get($pickle-colors, $color);
-
-    @if $_color {
-        color: $_color;
+    @if map-has-key($pickle-colors, $color) {
+        color: map-get($pickle-colors, $color);
     }
-    
     @else {
-        @include pickle-error('No color found with name `#{$color}`');
+        @include _pickle-error('No color found with name `#{$color}`');
     }
 };
 
 @mixin pickle-bgcolor($color) {
-    $_color: map-get($pickle-colors, $color);
-
-    @if $_color {
-        background-color: $_color;
+    @if map-has-key($pickle-colors, $color) {
+        background-color: map-get($pickle-colors, $color);
     }
-    
     @else {
-        @include pickle-error('No bgcolor found with name `#{$color}`');
+        @include _pickle-error('No bgcolor found with name `#{$color}`');
     }
 };
