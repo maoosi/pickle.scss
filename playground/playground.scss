@@ -25,7 +25,8 @@
     $fonts: (
         'Primary': (
             files: './Oswald-Regular.ttf',
-            family: #{'Oswald', Arial, sans-serif}
+            family: #{'Oswald', Arial, sans-serif},
+            ratio: 1
         )
     )
 );

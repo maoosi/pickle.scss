@@ -16,17 +16,22 @@
         @include _pickle-error('`base` parameter missing from size `#{$size}`');
     }
 
+    $ratio: map-get($font, ratio);
+    @if not $ratio {
+        $ratio: 1;
+    }
+
     $family: map-get($font, family);
     $size-base: map-get($size, base);
     $size-breakpoints: map-get($size, breakpoints);
 
     font-family: $family;
-    font-size: $size-base;
+    font-size: $size-base * $ratio;
 
     @if $size-breakpoints {
         @each $breakpoint, $font-size in $size-breakpoints {
             @include pickle-respond($breakpoint) {
-                font-size: $font-size;
+                font-size: $font-size * $ratio;
             }
         }
     }
