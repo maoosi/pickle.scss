@@ -14,13 +14,13 @@
 
 ## Installation
 
-First, add Pickle.scss as dependency into your project:
+First, add Pickle as dependency into your project:
 
 ```bash
 yarn add kuizto/pickle.scss#master
 ```
 
-Then, import and initiate Pickle.scss using Sass:
+Then, import and initiate using Sass:
 
 ```scss
 /* Import Pickle.scss */
@@ -30,14 +30,14 @@ Then, import and initiate Pickle.scss using Sass:
 @include pickle;
 ```
 
-🎉 Done! Pickle.scss is ready to use.
+🎉 Done! Pickle.scss is now ready to use.
 
 
 ## Usage
 
 ### 🔲 Grid system
 
-**Pickle** act as flavoured wrapper around the original [Jeet](https://github.com/mojotech/jeet) API, a smart human-centered precision grid. By default, it uses the following grid setup: `gutter: 3`, `layout-direction: LTR`, and `max-width: 1440px`. You can easily change those settings by updating the default `$grid` config:
+Pickle act as flavoured wrapper around the original [Jeet](https://github.com/mojotech/jeet) API, a smart human-centered precision grid. By default, it uses the following grid setup: `gutter: 3`, `layout-direction: LTR`, and `max-width: 1440px`. You can easily change those settings by updating the default `$grid` config:
 
 ```scss
 /* Initiate with custom grid settings (optional) */
@@ -47,7 +47,7 @@ Then, import and initiate Pickle.scss using Sass:
         layout-direction: LTR,
         max-width: 1440px
     )
-))    
+));
 ```
 
 Pickle gives you access to the below mixins. For more details on supported parameters, please refer to [Jeet API docs](https://github.com/mojotech/jeet/blob/master/docs/api.md).
@@ -83,12 +83,12 @@ Pickle gives you access to the below mixins. For more details on supported param
 
 ### 💠 Breakpoints
 
-By default, Pickle.scss comes with the following declarative breakpoints: `phone-only`, `tablet-portrait-up`, `tablet-up`, `desktop-up`, and `big-desktop-up`.
+By default, Pickle comes with the following declarative breakpoints: `phone-only`, `tablet-portrait-up`, `tablet-up`, `desktop-up`, and `big-desktop-up`.
 
 ```scss
 @include pickle-respond('tablet-up') {
 	/* ... */
-}
+};
 ```
 
 > According the Sass guidelines, media queries should not be tied to specific devices, and privilege names such as `medium` `large` `huge` rather than `tablet` `computer` `tv`.
@@ -112,7 +112,7 @@ Not happy with the default naming convention? Use your own by updating the defau
 
 ### 🎨 Colors
 
-Because colors are an important element of styling, **Pickle** comes with a way to easily managed colors from a single place, and three different methods to use those within projects:
+Because colors are an important element of styling, Pickle comes with a way to easily managed colors from a single place, and three different methods to use those within projects:
 
 ```scss
 /* Initiate with colors (optional) */
@@ -128,7 +128,7 @@ map-get($pickle-colors, 'beige');
 
 ### 🔤 Typography
 
-**Pickle** proposed approach for typography styles relies on a strong separation of concerns. In practice, this mean that fonts setup, size groups, and custom styling properties, are all managed independently.
+Pickle proposed approach for typography styles relies on a strong separation of concerns. In practice, this mean that fonts setup, size groups, and custom styling properties, are all managed independently.
 
 #### Fonts
 
@@ -185,7 +185,7 @@ To understand the **ratio** parameters, you need to understand the scenarios in 
 - In case a font need to be changed to another one AFTER the build started. Fonts being designed differently, it can have an impact on your current font-size properties that will need to be updated across your entire project.
 - In case you want to make the typography size groups consistant, no matter which font is used (different fonts usually means different design ratios, making a 16px size look bigger using one font family from another one).
 
-To accomodate for those scenarios and ease developement, **Pickle** integrates a `ratio` property (equal to 1 by default) that can be attached to any font:
+To accomodate for those scenarios and ease developement, Pickle integrates a `ratio` property (equal to 1 by default) that can be attached to any font:
 
 ```scss
 @include pickle((
@@ -219,7 +219,7 @@ Assuming the above config with `Primary` and `Secondary` fonts using the exact s
 
 ### 🔌 Global variables
 
-Sometimes it is important to have a central place to manage global styling variables, so **Pickle** config comes with a `$vars` parameter, allowing to declare and use variables globally.
+Sometimes it is important to have a central place to manage global styling variables, so Pickle config comes with a `$vars` parameter, allowing to declare and use variables globally.
 
 ```scss
 /* Initiate with vars (optional) */
