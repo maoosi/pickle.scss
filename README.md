@@ -51,10 +51,10 @@ Pickle act as flavoured wrapper around the original [Jeet](https://github.com/mo
 /* Initiate with custom grid settings (optional) */
 @include pickle((
 	$grid: (
-        gutter: 3,
-        layout-direction: LTR,
-        max-width: 1440px
-    )
+		gutter: 3,
+		layout-direction: LTR,
+		max-width: 1440px
+	)
 ));
 ```
 
@@ -152,7 +152,7 @@ Pickle proposed approach for typography styles relies on a strong separation of 
 			files: './Oswald-Regular.ttf',
 			family: #{'Oswald', Arial, sans-serif}
 		)
-    )
+	)
 ));
 ```
 
@@ -165,9 +165,9 @@ Pickle proposed approach for typography styles relies on a strong separation of 
 		'XL': (
 			base: 1.6rem,
 			breakpoints: ('tablet-up': 5rem)
-		)
+		),
 		'M': (base: 1.2rem)
-    )
+	)
 ));
 ```
 
@@ -175,14 +175,14 @@ Pickle proposed approach for typography styles relies on a strong separation of 
 
 ```scss
 .title {
-    @include pickle-typo($font: 'Primary', $size: 'XL');
+	@include pickle-typo($font: 'Primary', $size: 'XL');
 
-    /* custom styling */
-    text-decoration: underline;
+	/* custom styling */
+	text-decoration: underline;
 }
 
 .subtitle {
-    @include pickle-typo($font: 'Secondary', $size: 'M');
+	@include pickle-typo($font: 'Secondary', $size: 'M');
 }
 ```
 
@@ -199,7 +199,7 @@ To accomodate for those scenarios and ease developement, Pickle integrates a `ra
 @include pickle((
 	$sizes: (
 		'M': (base: 1.2rem)
-	)
+	),
 	$fonts: (
 		'Primary': (
 			files: './Oswald-Regular.ttf',
@@ -211,7 +211,7 @@ To accomodate for those scenarios and ease developement, Pickle integrates a `ra
 			family: #{'Oswald', Arial, sans-serif},
 			ratio: 1.5
 		)
-    )
+	)
 ));
 ```
 
@@ -234,7 +234,7 @@ Sometimes it is important to have a central place to manage global styling varia
 @include pickle((
 	$vars: (
 		'header-height': 5.5rem
-    )
+	)
 ));
 
 /* Use project vars */
@@ -249,22 +249,22 @@ The below code shows the default config. All parameters are optional.
 
 ```scss
 $config: (
-    $grid: (
-        gutter: 3,
-        layout-direction: LTR,
-        max-width: 1440px
-    ),
-    $breakpoints: (
-        'phone-only': (max-width: 599px),
-        'tablet-portrait-up': (min-width: 600px),
-        'tablet-up': (min-width: 900px),
-        'desktop-up': (min-width: 1200px),
-        'big-desktop-up': (min-width: 1800px)
-    ),
-    $colors: (),
-    $fonts: (),
-    $sizes: (),
-    $vars: ()
+	$grid: (
+		gutter: 3,
+		layout-direction: LTR,
+		max-width: 1440px
+	),
+	$breakpoints: (
+		'phone-only': (max-width: 599px),
+		'tablet-portrait-up': (min-width: 600px),
+		'tablet-up': (min-width: 900px),
+		'desktop-up': (min-width: 1200px),
+		'big-desktop-up': (min-width: 1800px)
+	),
+	$colors: (),
+	$fonts: (),
+	$sizes: (),
+	$vars: ()
 );
 
 @include pickle($config);
