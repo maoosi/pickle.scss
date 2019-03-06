@@ -30,10 +30,18 @@ Then, import and initiate using Sass:
 @include pickle;
 ```
 
-🎉 Done! Pickle.scss is now ready to use.
+🎉 Done! Pickle is now ready to use.
 
 
 ## Usage
+
+**Table of content**
+
+- [🔲 Grid system](#grid-system)
+- [💠 Breakpoints](#breakpoints)
+- [🎨 Colors](#colors)
+- [🔤 Typography](#typography)
+- [🔌 Global variables](#global-variables)
 
 ### 🔲 Grid system
 
