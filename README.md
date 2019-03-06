@@ -35,13 +35,13 @@ Then, import and initiate using Sass:
 
 ## Usage
 
-**Table of content**
+**Table of contents**
 
-- [🔲 Grid system](#-grid-system)
-- [💠 Breakpoints](#-breakpoints)
-- [🎨 Colors](#-colors)
-- [🔤 Typography](#-typography)
-- [🔌 Global variables](#-global-variables)
+- 🔲 [Grid system](#-grid-system)
+- 💠 [Breakpoints](#-breakpoints)
+- 🎨 [Colors](#-colors)
+- 🔤 [Typography](#-typography)
+- 🔌 [Global variables](#-global-variables)
 
 ### 🔲 Grid system
 
