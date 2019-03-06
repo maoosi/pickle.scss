@@ -37,11 +37,11 @@ Then, import and initiate using Sass:
 
 **Table of content**
 
-- [🔲 Grid system](#grid-system)
-- [💠 Breakpoints](#breakpoints)
-- [🎨 Colors](#colors)
-- [🔤 Typography](#typography)
-- [🔌 Global variables](#global-variables)
+- [🔲 Grid system](#-grid-system)
+- [💠 Breakpoints](#-breakpoints)
+- [🎨 Colors](#-colors)
+- [🔤 Typography](#-typography)
+- [🔌 Global variables](#-global-variables)
 
 ### 🔲 Grid system
 
