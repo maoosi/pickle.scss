@@ -2,7 +2,7 @@
   🥒 Pickle.scss
 =============== */
 
-@import '../node_modules/sanitize.css/sanitize.css';
+@import 'node_modules/sanitize.css/sanitize';
 
 $pickle-wires: null;
 $pickle-colors: null;
@@ -38,7 +38,7 @@ $pickle-breakpoints: null;
         (gutter: 3, layout-direction: LTR, max-width: 1440px),
         $grid
     ) !global;
-    
+
     $pickle-breakpoints:_pickle-extend((
         'phone-only': (max-width: 599px),
         'tablet-portrait-up': (min-width: 600px),

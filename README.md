@@ -24,7 +24,7 @@ Then, import and initiate using Sass:
 
 ```scss
 /* Import Pickle.scss */
-@import '~pickle.scss/pickle';
+@import 'node_modules/pickle.scss/pickle';
 
 /* Initiate with default config */
 @include pickle;
@@ -49,13 +49,13 @@ Pickle act as flavoured wrapper around the original [Jeet](https://github.com/mo
 
 ```scss
 /* Initiate with custom grid settings (optional) */
-@include pickle((
-	$grid: (
-		gutter: 3,
-		layout-direction: LTR,
-		max-width: 1440px
-	)
-));
+@include pickle(
+    $grid: (
+        gutter: 3,
+        layout-direction: LTR,
+        max-width: 1440px
+    )
+);
 ```
 
 Pickle gives you access to the below mixins. For more details on supported parameters, please refer to [Jeet API docs](https://github.com/mojotech/jeet/blob/master/docs/api.md).
@@ -100,22 +100,22 @@ By default, Pickle comes with the following declarative breakpoints: `phone-only
 ```
 
 > According the Sass guidelines, media queries should not be tied to specific devices, and privilege names such as `medium` `large` `huge` rather than `tablet` `computer` `tv`.
-> 
+>
 > Pickle takes a different stand on the question, as we believe ambiguity breeds confusion. A term like `medium` is too broad and can be interpreted in many different ways, while `tablet` is more clear and easy to remember. The idea is not about being 100% accurate across all devices, but to be as declarative as possible and easy to use.
 
 Not happy with the default naming convention? Use your own by updating the default `$breakpoints` config:
 
 ```scss
 /* Initiate with custom breakpoints config (optional) */
-@include pickle((
-	$breakpoints: (
-		'phone-only': (max-width: 599px),
-		'tablet-portrait-up': (min-width: 600px),
-		'tablet-up': (min-width: 900px),
-		'desktop-up': (min-width: 1200px),
-		'big-desktop-up': (min-width: 1800px)
-	)
-));
+@include pickle(
+    $breakpoints: (
+        'phone-only': (max-width: 599px),
+        'tablet-portrait-up': (min-width: 600px),
+        'tablet-up': (min-width: 900px),
+        'desktop-up': (min-width: 1200px),
+        'big-desktop-up': (min-width: 1800px)
+    )
+);
 ```
 
 ### 🎨 Colors
@@ -124,9 +124,9 @@ Because colors are an important element of styling, Pickle comes with a way to e
 
 ```scss
 /* Initiate with colors (optional) */
-@include pickle((
-	$colors: ('beige': #f5f5dc)
-));
+@include pickle(
+    $colors: ('beige': #f5f5dc)
+);
 
 /* Use project colors */
 @include pickle-color('beige');
@@ -142,33 +142,33 @@ Pickle proposed approach for typography styles relies on a strong separation of 
 
 ```scss
 /* Initiate with fonts (optional) */
-@include pickle((
-	$fonts: (
-		'Primary': (
-			files: './fonts/Helvetica.ttf' './fonts/Helvetica.woff2',
-			family: #{'Helvetica', Arial, sans-serif}
-		),
-		'Secondary': (
-			files: './Oswald-Regular.ttf',
-			family: #{'Oswald', Arial, sans-serif}
-		)
-	)
-));
+@include pickle(
+    $fonts: (
+        'Primary': (
+            files: './fonts/Helvetica.ttf' './fonts/Helvetica.woff2',
+            family: #{'Helvetica', Arial, sans-serif}
+        ),
+        'Secondary': (
+            files: './Oswald-Regular.ttf',
+            family: #{'Oswald', Arial, sans-serif}
+        )
+    )
+);
 ```
 
 #### Size groups
 
 ```scss
 /* Initiate with sizes (optional) */
-@include pickle((
-	$sizes: (
-		'XL': (
-			base: 1.6rem,
-			breakpoints: ('tablet-up': 5rem)
-		),
-		'M': (base: 1.2rem)
-	)
-));
+@include pickle(
+    $sizes: (
+        'XL': (
+            base: 1.6rem,
+            breakpoints: ('tablet-up': 5rem)
+        ),
+        'M': (base: 1.2rem)
+    )
+);
 ```
 
 #### Combined usage with custom styling
@@ -196,7 +196,7 @@ To understand the **ratio** parameters, you need to understand the scenarios in 
 To accomodate for those scenarios and ease developement, Pickle integrates a `ratio` property (equal to 1 by default) that can be attached to any font:
 
 ```scss
-@include pickle((
+@include pickle(
 	$sizes: (
 		'M': (base: 1.2rem)
 	),
@@ -212,7 +212,7 @@ To accomodate for those scenarios and ease developement, Pickle integrates a `ra
 			ratio: 1.5
 		)
 	)
-));
+);
 ```
 
 Assuming the above config with `Primary` and `Secondary` fonts using the exact same `family` and `files`:
@@ -248,8 +248,8 @@ Sometimes it is important to have a central place to manage global styling varia
 The below code shows the default config. All parameters are optional.
 
 ```scss
-$config: (
-	$grid: (
+@include pickle(
+    $grid: (
 		gutter: 3,
 		layout-direction: LTR,
 		max-width: 1440px
@@ -266,8 +266,6 @@ $config: (
 	$sizes: (),
 	$vars: ()
 );
-
-@include pickle($config);
 ```
 
 
