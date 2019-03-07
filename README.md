@@ -5,11 +5,11 @@
 
 ## Features
 
-- Consistant cross-browser default styling using [Sanitize.css](https://github.com/csstools/sanitize.css).
-- Smart grid system based on [Jeet](https://github.com/mojotech/jeet), a human-centered precision grid.
-- Declaratives breakpoints system for handling media queries.
-- Flexible typography setup with strong separation of concerns.
-- [Coming soon] Basic wires theme for quick UI prototyping (can be disabled).
+- [x] Consistant cross-browser default styling using [Sanitize.css](https://github.com/csstools/sanitize.css).
+- [x] Smart grid system based on [Jeet](https://github.com/mojotech/jeet), a human-centered precision grid.
+- [x] Declaratives breakpoints system for handling media queries.
+- [x] Flexible typography setup with strong separation of concerns.
+- [ ] [Coming soon] Basic wires theme for quick UI prototyping (can be disabled).
 
 
 ## Installation
@@ -267,11 +267,6 @@ The below code shows the default config. All parameters are optional.
     $vars: ()
 );
 ```
-
-
-## Roadmap
-
-- [ ] Create basic wires theme for quick UI prototyping
 
 
 ## Contribute
