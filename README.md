@@ -95,7 +95,7 @@ By default, Pickle comes with the following declarative breakpoints: `phone-only
 
 ```scss
 @include pickle-respond('tablet-up') {
-	/* ... */
+    /* ... */
 };
 ```
 
@@ -175,14 +175,14 @@ Pickle proposed approach for typography styles relies on a strong separation of 
 
 ```scss
 .title {
-	@include pickle-typo($font: 'Primary', $size: 'XL');
+    @include pickle-typo($font: 'Primary', $size: 'XL');
 
-	/* custom styling */
-	text-decoration: underline;
+    /* custom styling */
+    text-decoration: underline;
 }
 
 .subtitle {
-	@include pickle-typo($font: 'Secondary', $size: 'M');
+    @include pickle-typo($font: 'Secondary', $size: 'M');
 }
 ```
 
@@ -197,21 +197,21 @@ To accomodate for those scenarios and ease developement, Pickle integrates a `ra
 
 ```scss
 @include pickle(
-	$sizes: (
-		'M': (base: 1.2rem)
-	),
-	$fonts: (
-		'Primary': (
-			files: './Oswald-Regular.ttf',
-			family: #{'Oswald', Arial, sans-serif},
-			ratio: 1
-		),
-		'Secondary': (
-			files: './Oswald-Regular.ttf',
-			family: #{'Oswald', Arial, sans-serif},
-			ratio: 1.5
-		)
-	)
+    $sizes: (
+        'M': (base: 1.2rem)
+    ),
+    $fonts: (
+        'Primary': (
+            files: './Oswald-Regular.ttf',
+            family: #{'Oswald', Arial, sans-serif},
+            ratio: 1
+        ),
+        'Secondary': (
+            files: './Oswald-Regular.ttf',
+            family: #{'Oswald', Arial, sans-serif},
+            ratio: 1.5
+        )
+    )
 );
 ```
 
@@ -232,14 +232,14 @@ Sometimes it is important to have a central place to manage global styling varia
 ```scss
 /* Initiate with vars (optional) */
 @include pickle((
-	$vars: (
-		'header-height': 5.5rem
-	)
+    $vars: (
+        'header-height': 5.5rem
+    )
 ));
 
 /* Use project vars */
 .classname {
-	height: map-get($pickle-vars, 'header-height');
+    height: map-get($pickle-vars, 'header-height');
 }
 ```
 
