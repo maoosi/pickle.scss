@@ -231,11 +231,11 @@ Sometimes it is important to have a central place to manage global styling varia
 
 ```scss
 /* Initiate with vars (optional) */
-@include pickle((
+@include pickle(
     $vars: (
         'header-height': 5.5rem
     )
-));
+);
 
 /* Use project vars */
 .classname {
