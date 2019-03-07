@@ -250,21 +250,21 @@ The below code shows the default config. All parameters are optional.
 ```scss
 @include pickle(
     $grid: (
-		gutter: 3,
-		layout-direction: LTR,
-		max-width: 1440px
-	),
-	$breakpoints: (
-		'phone-only': (max-width: 599px),
-		'tablet-portrait-up': (min-width: 600px),
-		'tablet-up': (min-width: 900px),
-		'desktop-up': (min-width: 1200px),
-		'big-desktop-up': (min-width: 1800px)
-	),
-	$colors: (),
-	$fonts: (),
-	$sizes: (),
-	$vars: ()
+        gutter: 3,
+        layout-direction: LTR,
+        max-width: 1440px
+    ),
+    $breakpoints: (
+        'phone-only': (max-width: 599px),
+        'tablet-portrait-up': (min-width: 600px),
+        'tablet-up': (min-width: 900px),
+        'desktop-up': (min-width: 1200px),
+        'big-desktop-up': (min-width: 1800px)
+    ),
+    $colors: (),
+    $fonts: (),
+    $sizes: (),
+    $vars: ()
 );
 ```
 
