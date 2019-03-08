@@ -8,21 +8,65 @@
                 @include _pickle-error('Font `#{$font}` is missing `family` parameter');
             }
 
-            $src: 'local("?")';
             $files: map-get($font, files);
-
+            $fonts-extensions: ();
             @each $file in $files {
-                $f: _pickle-str-split($file, '.');
-                $format: nth($f, length($f));
-                $src: #{'#{$src}, url("#{$file}") format("#{$format}")'};
+                $parts: _pickle-str-split($file, '.');
+                $extension: nth($parts, length($parts));
+                $fonts-extensions: append($fonts-extensions, (
+                    'extension': $extension,
+                    'url': $file
+                ));
+            }
+
+            $bp-fontface: (
+                'eot': ('format': 'embedded-opentype', 'suffix': '?#iefix'),
+                'woff2': ('format': 'woff2', 'suffix': ''),
+                'woff': ('format': 'woff', 'suffix': ''),
+                'otf': ('format': 'opentype', 'suffix': ''),
+                'ttf': ('format': 'truetype', 'suffix': ''),
+                'svg': ('format': 'svg', 'suffix': '##{map-get($font, family)}')
+            );
+
+            $src1: '';
+            $src2: 'local("☺︎")';
+            @each $bp-ext, $bp-data in $bp-fontface {
+                $bp-format: map-get($bp-data, 'format');
+                $bp-suffix: map-get($bp-data, 'suffix');
+
+                @each $font-extension in $fonts-extensions {
+                    $url: map-get($font-extension, 'url');
+                    $extension: map-get($font-extension, 'extension');
+
+                    @if $bp-ext == $extension {
+                        @if $bp-ext == 'eot' {
+                            @if not $src1 == '' {
+                                $src1: #{'#{$src1}, url("#{$url}#{$bp-suffix}") format("#{$bp-format}")'};
+                            }
+                            @else {
+                                $src1: #{'url("#{$url}#{$bp-suffix}") format("#{$bp-format}")'};
+                            }
+                        }
+                        @else {
+                            $src2: #{'#{$src2}, url("#{$url}#{$bp-suffix}") format("#{$bp-format}")'};
+                        }
+                    }
+                }
             }
 
             @at-root {
                 @font-face {
                     font-family: map-get($font, family);
-                    src: $src;
+                    @if $src1 != '' {
+                        src: $src1;
+                    }
+                    @if $src2 != '' {
+                        src: $src2;
+                    }
                     font-weight: normal;
                     font-style: normal;
+                    font-variant: normal;
+                    font-display: swap;
                 }
             }
         }
