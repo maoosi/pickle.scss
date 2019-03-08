@@ -1,26 +1,30 @@
 @mixin _pickle-fonts {
-    @each $name, $font in $pickle-fonts {
-        @if not map-has-key($font, files) {
-            @include _pickle-error('Font `#{$font}` is missing `files` parameter');
-        }
-        @if not map-has-key($font, family) {
-            @include _pickle-error('Font `#{$font}` is missing `family` parameter');
-        }
+    @if not _pickle-already-injected('pickle-fonts') {
+        @each $name, $font in $pickle-fonts {
+            @if not map-has-key($font, files) {
+                @include _pickle-error('Font `#{$font}` is missing `files` parameter');
+            }
+            @if not map-has-key($font, family) {
+                @include _pickle-error('Font `#{$font}` is missing `family` parameter');
+            }
 
-        $src: 'local("?")';
-        $files: map-get($font, files);
+            $src: 'local("?")';
+            $files: map-get($font, files);
 
-        @each $file in $files {
-            $f: _pickle-str-split($file, '.');
-            $format: nth($f, length($f));
-            $src: #{'#{$src}, url("#{$file}") format("#{$format}")'};
-        }
+            @each $file in $files {
+                $f: _pickle-str-split($file, '.');
+                $format: nth($f, length($f));
+                $src: #{'#{$src}, url("#{$file}") format("#{$format}")'};
+            }
 
-        @font-face {
-            font-family: map-get($font, family);
-            src: $src;
-            font-weight: normal;
-            font-style: normal;
+            @at-root {
+                @font-face {
+                    font-family: map-get($font, family);
+                    src: $src;
+                    font-weight: normal;
+                    font-style: normal;
+                }
+            }
         }
     }
 };

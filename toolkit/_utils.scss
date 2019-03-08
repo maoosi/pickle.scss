@@ -21,3 +21,12 @@
 
     @return $split-arr;
 }
+
+$_pickle-injected: ();
+@function _pickle-already-injected($name) {
+    @if index($_pickle-injected, $name) {
+        @return true;
+    }
+    $_pickle-injected: append($_pickle-injected, $name) !global;
+    @return false;
+}
