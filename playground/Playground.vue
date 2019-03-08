@@ -1,8 +1,12 @@
+<template>
+    <div class="container">
+        <div class="column">First column</div>
+        <div class="column">Second column</div>
+        <div class="column">Third column</div>
+    </div>
+</template>
 
-/* ===============
-  🥒 Pickle Playground
-=============== */
-
+<style lang="scss">
 @import '../pickle';
 
 @include pickle(
@@ -24,7 +28,7 @@
     ),
     $fonts: (
         'Primary': (
-            files: './Oswald-Regular.ttf',
+            files: './fonts/Oswald-Regular.ttf',
             family: #{'Oswald', Arial, sans-serif},
             ratio: 1
         )
@@ -47,3 +51,4 @@ body {
         }
     }
 }
+</style>

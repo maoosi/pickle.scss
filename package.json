@@ -6,10 +6,10 @@
 		"sanitize.css": "^8.0.0"
 	},
 	"scripts": {
-		"playground": "parcel playground/index.html --cache-dir playground/.tmp/cache --out-dir playground/.tmp/output --open"
+		"playground": "vue serve ./playground/Playground.vue --open"
 	},
 	"devDependencies": {
-		"parcel-bundler": "^1.11.0",
-		"sass": "^1.17.2"
+		"node-sass": "^4.11.0",
+		"sass-loader": "^7.1.0"
 	}
 }

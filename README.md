@@ -272,14 +272,15 @@ The below code shows the default config. All parameters are optional.
 ## Contribute
 
 ```bash
-# install parcel globally
-npm install -g parcel-bundler
+# install Vue instant prototyping
+# https://cli.vuejs.org/guide/prototyping.html
+npm install -g @vue/cli-service-global
+# or
+yarn global add @vue/cli-service-global
 
-# install dependencies
+# install project dependencies
 yarn install
 
 # run the playground
 yarn playground
 ```
-
-**Note:** Parcel will only watch changes applied to `playground/playground.scss`.
