@@ -2,8 +2,6 @@
   🥒 Pickle.scss
 =============== */
 
-@import 'node_modules/sanitize.css/sanitize';
-
 $pickle-wires: null;
 $pickle-colors: null;
 $pickle-fonts: null;
@@ -13,6 +11,7 @@ $pickle-grid: null;
 $pickle-breakpoints: null;
 
 @import 'toolkit/utils';
+@import 'toolkit/sanitize';
 @import 'toolkit/grid';
 @import 'toolkit/breakpoints';
 @import 'toolkit/colors';
@@ -47,6 +46,7 @@ $pickle-breakpoints: null;
         'big-desktop-up': (min-width: 1800px)
     ), $breakpoints) !global;
 
+    @include _pickle-sanitize;
     @include _pickle-grid;
     @include _pickle-fonts;
 }
