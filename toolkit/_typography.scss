@@ -1,8 +1,8 @@
-@mixin pickle-typo($font, $size) {
+@mixin pickle-typo($font, $size: null) {
     @if not map-has-key($pickle-fonts, $font) {
         @include _pickle-error('No font found with name `#{$font}`');
     }
-    @if not map-has-key($pickle-sizes, $size) {
+    @if $size != null and not map-has-key($pickle-sizes, $size) {
         @include _pickle-error('No size found with name `#{$size}`');
     }
 
@@ -12,7 +12,7 @@
     @if not map-has-key($font, family) {
         @include _pickle-error('`family` parameter missing from font `#{$font}`');
     }
-    @if not map-has-key($size, base) {
+    @if $size != null and not map-has-key($size, base) {
         @include _pickle-error('`base` parameter missing from size `#{$size}`');
     }
 
@@ -21,18 +21,21 @@
         $ratio: 1;
     }
 
-    $family: map-get($font, family);
-    $size-base: map-get($size, base);
-    $size-breakpoints: map-get($size, breakpoints);
+    @if $size != null {
+        $family: map-get($font, family);
+        $size-base: map-get($size, base);
+        $size-breakpoints: map-get($size, breakpoints);
 
-    font-family: $family;
-    font-size: $size-base * $ratio;
+        font-family: $family;
+        font-size: $size-base * $ratio;
 
-    @if $size-breakpoints {
-        @each $breakpoint, $font-size in $size-breakpoints {
-            @include pickle-respond($breakpoint) {
-                font-size: $font-size * $ratio;
+        @if $size-breakpoints {
+            @each $breakpoint, $font-size in $size-breakpoints {
+                @include pickle-respond($breakpoint) {
+                    font-size: $font-size * $ratio;
+                }
             }
         }
     }
+    
 };
