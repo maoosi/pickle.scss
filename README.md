@@ -17,7 +17,7 @@
 First, add Pickle as dependency into your project:
 
 ```bash
-yarn add kuizto/pickle.scss#master
+yarn add pickle.scss
 ```
 
 Then, import and initiate using Sass:
