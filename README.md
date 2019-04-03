@@ -53,7 +53,7 @@ Create `src/styles/variables.scss` with the following:
 
 Inject the previously created file into your project via `vue.config.js`:
 
-```
+```javascript
 module.exports = {
     css: {
         loaderOptions: {
