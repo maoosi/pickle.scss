@@ -1,6 +1,6 @@
 {
 	"name": "pickle.scss",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"dependencies": {
 		"jeet": "^7.2.0"
 	},
