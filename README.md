@@ -9,10 +9,11 @@
 - [x] Smart grid system based on [Jeet](https://github.com/mojotech/jeet), a human-centered precision grid.
 - [x] Declaratives breakpoints system for handling media queries.
 - [x] Flexible typography setup with strong separation of concerns.
-- [ ] [Coming soon] Basic wires theme for quick UI prototyping (can be disabled).
 
 
 ## Installation
+
+### Basic
 
 First, add Pickle as dependency into your project:
 
@@ -28,6 +29,49 @@ Then, import and initiate using Sass:
 
 /* Initiate with default config */
 @include pickle;
+```
+
+🎉 Done! Pickle is now ready to use.
+
+### Vue.js
+
+First, add Pickle as dependency into your project:
+
+```bash
+yarn add pickle.scss
+```
+
+Create `src/styles/variables.scss` with the following:
+
+```scss
+// import pickle library
+@import 'node_modules/pickle.scss/pickle';
+
+// initiate pickle with $webpack option set to true
+@include pickle($webpack: true);
+```
+
+Inject the previously created file into your project via `vue.config.js`:
+
+```
+module.exports = {
+    css: {
+        loaderOptions: {
+            sass: {
+                data: `@import "@/styles/variables.scss";`
+            }
+        }
+    }
+}
+```
+
+Finally, insert the below into your `App.vue`:
+
+```html
+<style lang="scss">
+    /* Manually insert root css (only once in your project) */
+    @include pickle-once;
+</style>
 ```
 
 🎉 Done! Pickle is now ready to use.
