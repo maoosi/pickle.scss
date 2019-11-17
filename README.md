@@ -1,6 +1,6 @@
 # Pickle.scss
 
-> 🥒 Minimalist and opinionated Sass toolkit.
+> 🥒 Light opinionated Sass toolkit.
 
 
 ## Features
