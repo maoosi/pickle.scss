@@ -8,7 +8,7 @@
 		"playground": "vue serve ./playground/Playground.vue --open"
 	},
 	"devDependencies": {
-		"node-sass": "^4.11.0",
-		"sass-loader": "^7.1.0"
+		"node-sass": "^4.13.0",
+		"sass-loader": "^8.0.0"
 	}
 }
