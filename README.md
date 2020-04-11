@@ -1,14 +1,14 @@
 # Pickle.scss
 
-> 🥒 Light opinionated Sass toolkit.
+> 🥒 Vinegary Sass toolkit.
 
 
 ## Features
 
-- [x] Consistant cross-browser default styling using [Sanitize.css](https://github.com/csstools/sanitize.css).
-- [x] Smart grid system based on [Jeet](https://github.com/mojotech/jeet), a human-centered precision grid.
+- [x] Typography setup that enforce separation of concerns.
 - [x] Declaratives breakpoints system for handling media queries.
-- [x] Flexible typography setup with strong separation of concerns.
+- [x] Opiniated default styles using [Sanitize.css](https://github.com/csstools/sanitize.css), along with custom flavors.
+- [x] Handy management and usage of global colors and variables.
 
 
 ## Installation
@@ -24,11 +24,14 @@ yarn add pickle.scss
 Then, import and initiate using Sass:
 
 ```scss
-/* Import Pickle.scss */
+/* Import Pickle */
 @import 'node_modules/pickle.scss/pickle';
 
-/* Initiate with default config */
+/* Include Pickle mixins and vars */
 @include pickle;
+
+/* Inject Pickle styles */
+@include pickle-styles;
 ```
 
 🎉 Done! Pickle is now ready to use.
@@ -41,14 +44,14 @@ First, add Pickle as dependency into your project:
 yarn add pickle.scss
 ```
 
-Create `src/styles/variables.scss` with the following:
+Create `src/styles/globals.scss` with the following:
 
 ```scss
-// import pickle library
+/* Import Pickle */
 @import 'node_modules/pickle.scss/pickle';
 
-// initiate pickle with $webpack option set to true
-@include pickle($webpack: true);
+/* Include Pickle mixins and vars */
+@include pickle;
 ```
 
 Inject the previously created file into your project via `vue.config.js`:
@@ -58,7 +61,7 @@ module.exports = {
     css: {
         loaderOptions: {
             sass: {
-                data: `@import "@/styles/variables.scss";`
+                data: `@import "@/styles/globals.scss";`
             }
         }
     }
@@ -69,69 +72,43 @@ Finally, insert the below into your `App.vue`:
 
 ```html
 <style lang="scss">
-    /* Manually insert root css (only once in your project) */
-    @include pickle-once;
+    /* Inject Pickle styles (only once in your project) */
+    @include pickle-styles;
 </style>
 ```
 
 🎉 Done! Pickle is now ready to use.
+
+### Advanced
+
+```scss
+/* Include Pickle mixins and vars (custom params) */
+@include pickle(
+    $breakpoints: (),
+    $colors: (),
+    $fonts: (),
+    $sizes: (),
+    $vars: ()
+);
+
+/* Inject Pickle styles (fonts only) */
+@include pickle-styles(
+    $sanitize: false,
+    $flavors: false,
+    $fonts: true
+);
+```
 
 
 ## Usage
 
 **Table of contents**
 
-- 🔲 [Grid system](#-grid-system)
 - 💠 [Breakpoints](#-breakpoints)
 - 🎨 [Colors](#-colors)
 - 🔤 [Typography](#-typography)
 - 🔌 [Global variables](#-global-variables)
 
-### 🔲 Grid system
-
-Pickle act as flavoured wrapper around the original [Jeet](https://github.com/mojotech/jeet) API, a smart human-centered precision grid. By default, it uses the following grid setup: `gutter: 3`, `layout-direction: LTR`, and `max-width: 1440px`. You can easily change those settings by updating the default `$grid` config:
-
-```scss
-/* Initiate with custom grid settings (optional) */
-@include pickle(
-    $grid: (
-        gutter: 3,
-        layout-direction: LTR,
-        max-width: 1440px
-    )
-);
-```
-
-Pickle gives you access to the below mixins. For more details on supported parameters, please refer to [Jeet API docs](https://github.com/mojotech/jeet/blob/master/docs/api.md).
-
-```scss
-/* Column with gutter | ($ratios: 1, $offset: 0, $cycle: 0) */
-@include pickle-column(2/4);
-
-/* Column without gutter | ($ratio: 1, $offset: 0, $cycle: 0) */
-@include pickle-span(2/4, $cycle: 4);
-
-/* Works similar to an offset | ($ratios: 0, $col-or-span: column) */
-@include pickle-move(-1/3);
-
-/* Disable source ordering setup previously */
-@include pickle-unmove;
-
-/* Center containers | ($max-width: map-get($pickle-grid, 'max-width'), $pad: 0) */
-@include pickle-center(420px);
-
-/* Reset styles associater with pickle-center */
-@include pickle-uncenter;
-
-/* Stack elements on top of each other | ($pad: 0, $align: false) */
-@include pickle-stack;
-
-/* Cancel pickle-stack */
-@include pickle-unstack;
-
-/* A simple/kinda-modern clearfix */
-@include pickle-clearfix;
-```
 
 ### 💠 Breakpoints
 
@@ -147,10 +124,10 @@ By default, Pickle comes with the following declarative breakpoints: `phone-only
 >
 > Pickle takes a different stand on the question, as we believe ambiguity breeds confusion. A term like `medium` is too broad and can be interpreted in many different ways, while `tablet` is more clear and easy to remember. The idea is not about being 100% accurate across all devices, but to be as declarative as possible and easy to use.
 
-Not happy with the default naming convention? Use your own by updating the default `$breakpoints` config:
+Not happy with the default? You can update the default `$breakpoints` config with your own config, or by copying one of our recommended alternatives below:
 
 ```scss
-/* Initiate with custom breakpoints config (optional) */
+/* Default naming groups */
 @include pickle(
     $breakpoints: (
         'phone-only': (max-width: 599px),
@@ -158,6 +135,30 @@ Not happy with the default naming convention? Use your own by updating the defau
         'tablet-up': (min-width: 900px),
         'desktop-up': (min-width: 1200px),
         'big-desktop-up': (min-width: 1800px)
+    )
+);
+
+/* Sizes based naming groups */
+@include pickle(
+    $breakpoints: (
+        'xsmall': (max-width: 575.99px),
+        'small': (min-width: 576px),
+        'medium': (min-width: 768px),
+        'large': (min-width: 992px),
+        'xlarge': (min-width: 1200px),
+        'xxlarge': (min-width: 1800px)
+    )
+);
+
+/* Devices category based naming groups */
+@include pickle(
+    $breakpoints: (
+        'mobile-portrait': (max-width: 567.99px),
+        'mobile-landscape': (min-width: 568px),
+        'tablet-portrait': (min-width: 768px),
+        'tablet-landscape': (min-width: 1024px),
+        'laptop-displays': (min-width: 1366px),
+        'desktop-displays': (min-width: 1680px)
     )
 );
 ```
@@ -169,13 +170,17 @@ Because colors are an important element of styling, Pickle comes with a way to e
 ```scss
 /* Initiate with colors (optional) */
 @include pickle(
-    $colors: ('beige': #f5f5dc)
+    $colors: (
+        'blue': #0000ff,
+        'darkBlue': darken($pickle-color-blue, 20%)
+    )
 );
 
 /* Use project colors */
-@include pickle-color('beige');
-@include pickle-bgcolor('beige');
-map-get($pickle-colors, 'beige');
+@include pickle-color('blue');
+@include pickle-bgcolor('blue');
+map-get($pickle-colors, 'blue');
+$pickle-color-blue
 ```
 
 ### 🔤 Typography
@@ -188,13 +193,31 @@ Pickle proposed approach for typography styles relies on a strong separation of 
 /* Initiate with fonts (optional) */
 @include pickle(
     $fonts: (
+        // primary font
         'Primary': (
             files: './fonts/Helvetica.ttf' './fonts/Helvetica.woff2',
-            family: #{'Helvetica', Arial, sans-serif}
+            family: 'Helvetica',
+            fallback: #{Arial, sans-serif}
         ),
+        // primary font variant using different family name
+        'PrimaryBold': (
+            files: './fonts/Helvetica-Bold.ttf' './fonts/Helvetica-Bold.woff2',
+            family: 'HelveticaBold',
+            fallback: #{Arial, sans-serif}
+        ),
+        // secondary font
         'Secondary': (
             files: './Oswald-Regular.ttf',
-            family: #{'Oswald', Arial, sans-serif}
+            family: 'Oswald',
+            weight: 400,
+            fallback: #{Arial, sans-serif}
+        ),
+        // secondary font variant using same family name, but different weight
+        'SecondaryBold': (
+            files: './Oswald-Bold.ttf',
+            family: 'Oswald',
+            weight: 700,
+            fallback: #{Arial, sans-serif}
         )
     )
 );
@@ -208,7 +231,9 @@ Pickle proposed approach for typography styles relies on a strong separation of 
     $sizes: (
         'XL': (
             base: 1.6rem,
-            breakpoints: ('tablet-up': 5rem)
+            breakpoints: (
+                'tablet-up': 5rem
+            )
         ),
         'M': (base: 1.2rem)
     )
@@ -218,15 +243,21 @@ Pickle proposed approach for typography styles relies on a strong separation of 
 #### Combined usage with custom styling
 
 ```scss
+/* Using both $font and $size */
 .title {
     @include pickle-typo($font: 'Primary', $size: 'XL');
-
-    /* custom styling */
     text-decoration: underline;
 }
-
 .subtitle {
     @include pickle-typo($font: 'Secondary', $size: 'M');
+}
+
+/* Using $font and $size independently */
+.xlarge {
+    @include pickle-typo($size: 'XL');
+}
+.secondary {
+    @include pickle-typo($font: 'Secondary');
 }
 ```
 
@@ -237,7 +268,7 @@ To understand the **ratio** parameters, you need to understand the scenarios in 
 - In case a font need to be changed to another one AFTER the build started. Fonts being designed differently, it can have an impact on your current font-size properties that will need to be updated across your entire project.
 - In case you want to make the typography size groups consistant, no matter which font is used (different fonts usually means different design ratios, making a 16px size look bigger using one font family from another one).
 
-To accomodate for those scenarios and ease developement, Pickle integrates a `ratio` property (equal to 1 by default) that can be attached to any font:
+To accomodate for those scenarios and ease developement, Pickle integrates a `ratio` property (equal to 1 by default) that can be changed for any font:
 
 ```scss
 @include pickle(
@@ -247,12 +278,12 @@ To accomodate for those scenarios and ease developement, Pickle integrates a `ra
     $fonts: (
         'Primary': (
             files: './Oswald-Regular.ttf',
-            family: #{'Oswald', Arial, sans-serif},
+            family: 'Oswald',
             ratio: 1
         ),
         'Secondary': (
             files: './Oswald-Regular.ttf',
-            family: #{'Oswald', Arial, sans-serif},
+            family: 'Oswald',
             ratio: 1.5
         )
     )
@@ -277,39 +308,14 @@ Sometimes it is important to have a central place to manage global styling varia
 /* Initiate with vars (optional) */
 @include pickle(
     $vars: (
-        'header-height': 5.5rem
+        'header-height': 5.5rem,
+        'headerLarge-height': calc($pickle-var-header-height * 2)
     )
 );
 
 /* Use project vars */
-.classname {
-    height: map-get($pickle-vars, 'header-height');
-}
-```
-
-## Default config
-
-The below code shows the default config. All parameters are optional.
-
-```scss
-@include pickle(
-    $grid: (
-        gutter: 3,
-        layout-direction: LTR,
-        max-width: 1440px
-    ),
-    $breakpoints: (
-        'phone-only': (max-width: 599px),
-        'tablet-portrait-up': (min-width: 600px),
-        'tablet-up': (min-width: 900px),
-        'desktop-up': (min-width: 1200px),
-        'big-desktop-up': (min-width: 1800px)
-    ),
-    $colors: (),
-    $fonts: (),
-    $sizes: (),
-    $vars: ()
-);
+map-get($pickle-vars, 'header-height');
+$pickle-var-header-height;
 ```
 
 

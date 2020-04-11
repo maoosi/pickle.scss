@@ -1,8 +1,7 @@
 @mixin pickle-color($color) {
     @if map-has-key($pickle-colors, $color) {
         color: map-get($pickle-colors, $color);
-    }
-    @else {
+    } @else {
         @include _pickle-error('No color found with name `#{$color}`');
     }
 };
@@ -10,8 +9,7 @@
 @mixin pickle-bgcolor($color) {
     @if map-has-key($pickle-colors, $color) {
         background-color: map-get($pickle-colors, $color);
-    }
-    @else {
+    } @else {
         @include _pickle-error('No bgcolor found with name `#{$color}`');
     }
 };

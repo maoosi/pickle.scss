@@ -1,9 +1,5 @@
-@function _pickle-extend($obj, $ext-obj) {
-    @return map-merge($obj, $ext-obj);
-}
-
 @mixin _pickle-error($error) {
-    @error '[Pickle.scss] #{$error}. Please check https://github.com/kuizto/pickle.scss';
+    @error '[Pickle.scss] #{$error}. Please check https://github.com/maoosi/pickle.scss';
 }
 
 @function _pickle-str-split($string, $separator) {

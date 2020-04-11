@@ -41,17 +41,20 @@
                             @if $bp-ext == 'eot' {
                                 @if not $src1 == '' {
                                     $src1: #{'#{$src1}, url("#{$url}#{$bp-suffix}") format("#{$bp-format}")'};
-                                }
-                                @else {
+                                } @else {
                                     $src1: #{'url("#{$url}#{$bp-suffix}") format("#{$bp-format}")'};
                                 }
-                            }
-                            @else {
+                            } @else {
                                 $src2: #{'#{$src2}, url("#{$url}#{$bp-suffix}") format("#{$bp-format}")'};
                             }
                         }
                     }
                 }
+            }
+
+            $weight: map-get($font, weight);
+            @if not $weight {
+                $weight: normal;
             }
 
             @at-root {
@@ -63,7 +66,7 @@
                     @if $src2 != '' {
                         src: $src2;
                     }
-                    font-weight: normal;
+                    font-weight: $weight;
                     font-style: normal;
                     font-variant: normal;
                     font-display: swap;

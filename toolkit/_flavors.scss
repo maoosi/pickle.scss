@@ -1,0 +1,35 @@
+@mixin _pickle-flavors {
+    @if not _pickle-already-injected('pickle-flavors') {
+        @at-root {
+            /* ===============
+            🥒 Pickle.scss | github.com/maoosi/pickle.scss
+            =============== */
+
+            /* Page
+            * ========================================================================== */
+
+            html, body {
+                font-size: 100%;
+                overflow-x: hidden;
+            }
+
+            /* Headings
+            * ========================================================================== */
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                margin: 0;
+                padding: 0;
+                border: 0;
+                font-size: 100%;
+                font: inherit;
+                vertical-align: baseline;
+            }
+            
+        }
+    }
+}
