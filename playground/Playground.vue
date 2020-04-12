@@ -10,29 +10,60 @@
 @import '../pickle';
 
 @include pickle(
-    $grid: (
-        gutter: 3,
-        layout-direction: LTR,
-        max-width: 1440px
-    ),
     $colors: (
         'red': red,
         'yellow': yellow,
         'green': green
     ),
+    $vars: (
+        'column-height': 10rem
+    )
+);
+
+@include pickle(
+    $colors: (
+        'darkYellow': darken(map-get($pickle-colors, 'yellow'), 20%)
+    ),
+    $vars: (
+        'column-height-double': calc(#{map-get($pickle-vars, 'column-height')} * 2)
+    )
+);
+
+@include pickle(
     $sizes: (
         'XL': (
             base: 1.6rem,
-            breakpoints: ('tablet-up': 5rem)
+            breakpoints: (
+                'tablet-up': 5rem
+            )
+        ),
+        'S': (
+            base: 1rem,
+            breakpoints: (
+                'tablet-up': 2rem
+            )
         )
     ),
     $fonts: (
         'Primary': (
-            files: './fonts/Oswald-Regular.ttf',
-            family: #{'Oswald', Arial, sans-serif},
+            files: './fonts/Montserrat/Montserrat-Light.ttf',
+            family: 'MontserratLight',
+            fallback: #{Arial, sans-serif},
+            ratio: 1
+        ),
+        'PrimaryBold': (
+            files: './fonts/Montserrat/Montserrat-Bold.ttf',
+            family: 'MontserratBold',
+            fallback: #{Arial, sans-serif},
             ratio: 1
         )
     )
+);
+
+@include pickle_styles(
+    $sanitize: true,
+    $flavors: true,
+    $fonts: true
 );
 
 body {
@@ -41,13 +72,18 @@ body {
     }
 
     .container {
-        @include pickle-center;
-        @include pickle-bgcolor('yellow');
         @include pickle-typo($font: 'Primary', $size: 'XL');
 
         .column {
-            @include pickle-column(1/3);
-            @include pickle-bgcolor('green');
+            @include pickle-bgcolor('yellow');
+            height: map-get($pickle-vars, 'column-height');
+
+            &:nth-of-type(2) {
+                @include pickle-bgcolor('darkYellow');
+                height: map-get($pickle-vars, 'column-height-double');
+                @include pickle-typo($font: 'PrimaryBold');
+                @include pickle-typo($size: 'S');
+            }
         }
     }
 }

@@ -9,8 +9,7 @@
         @media #{$query} {
             @content;
         }
-    }
-    @else {
+    } @else {
         @include _pickle-error('No breakpoint found with name `#{$breakpoint}`');
     }
 }

@@ -1,59 +1,67 @@
-/* ===============
-  🥒 Pickle.scss
-=============== */
-
-$pickle-wires: null;
-$pickle-colors: null;
-$pickle-fonts: null;
-$pickle-sizes: null;
-$pickle-vars: null;
-$pickle-grid: null;
-$pickle-breakpoints: null;
-
 @import 'toolkit/utils';
 @import 'toolkit/sanitize';
-@import 'toolkit/grid';
+@import 'toolkit/flavors';
 @import 'toolkit/breakpoints';
 @import 'toolkit/colors';
 @import 'toolkit/fonts';
 @import 'toolkit/typography';
 
 @mixin pickle(
-    $grid: (),
-    $breakpoints: (),
+    $breakpoints: false,
     $colors: (),
     $fonts: (),
     $sizes: (),
-    $vars: (),
-    $webpack: false
+    $vars: ()
 ) {
-    $pickle-colors: $colors !global;
-    $pickle-fonts: $fonts !global;
-    $pickle-sizes: $sizes !global;
-    $pickle-vars: $vars !global;
-    $pickle-webpack: $webpack !global;
+    @if variable-exists(pickle-colors) {
+        $pickle-colors: map-merge($pickle-colors, $colors) !global;
+    } @else {
+        $pickle-colors: $colors !global;
+    }
 
-    $pickle-grid:_pickle-extend(
-        (gutter: 3, layout-direction: LTR, max-width: 1440px),
-        $grid
-    ) !global;
+    @if variable-exists(pickle-vars) {
+        $pickle-vars: map-merge($pickle-vars, $vars) !global;
+    } @else {
+        $pickle-vars: $vars !global;
+    }
 
-    $pickle-breakpoints:_pickle-extend((
-        'phone-only': (max-width: 599px),
-        'tablet-portrait-up': (min-width: 600px),
-        'tablet-up': (min-width: 900px),
-        'desktop-up': (min-width: 1200px),
-        'big-desktop-up': (min-width: 1800px)
-    ), $breakpoints) !global;
+    @if variable-exists(pickle-fonts) {
+        $pickle-fonts: map-merge($pickle-fonts, $fonts) !global;
+    } @else {
+        $pickle-fonts: $fonts !global;
+    }
 
-    @include _pickle-grid;
+    @if variable-exists(pickle-sizes) {
+        $pickle-sizes: map-merge($pickle-sizes, $sizes) !global;
+    } @else {
+        $pickle-sizes: $sizes !global;
+    }
 
-    @if not $pickle-webpack {
-        @include pickle-once;
+    @if variable-exists(pickle-breakpoints) {
+        @if $breakpoints {
+            $pickle-breakpoints: map-merge($pickle-breakpoints, $breakpoints) !global;
+        }
+    } @else {
+        @if $breakpoints {
+            $pickle-breakpoints: $breakpoints !global;
+        } @else {
+            $pickle-breakpoints: (
+                'phone-only': (max-width: 599px),
+                'tablet-portrait-up': (min-width: 600px),
+                'tablet-up': (min-width: 900px),
+                'desktop-up': (min-width: 1200px),
+                'big-desktop-up': (min-width: 1800px)
+            ) !global;
+        }
     }
 }
 
-@mixin pickle-once {
-    @include _pickle-sanitize;
-    @include _pickle-fonts;
+@mixin pickle-styles(
+    $sanitize: true,
+    $flavors: true,
+    $fonts: true
+) {
+    @if $sanitize { @include _pickle-sanitize; }
+    @if $flavors { @include _pickle-flavors; }
+    @if $fonts { @include _pickle-fonts; }
 }

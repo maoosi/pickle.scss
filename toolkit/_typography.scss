@@ -1,5 +1,9 @@
-@mixin pickle-typo($font, $size: null) {
-    @if not map-has-key($pickle-fonts, $font) {
+@mixin pickle-typo($font: null, $size: null) {
+
+    @if $font == null and $size == null {
+        @include _pickle-error('Missing `$font` and/or `$size` parameters');
+    }
+    @if $font != null and not map-has-key($pickle-fonts, $font) {
         @include _pickle-error('No font found with name `#{$font}`');
     }
     @if $size != null and not map-has-key($pickle-sizes, $size) {
@@ -8,25 +12,32 @@
 
     $font: map-get($pickle-fonts, $font);
     $size: map-get($pickle-sizes, $size);
+    $ratio: false;
 
-    @if not map-has-key($font, family) {
-        @include _pickle-error('`family` parameter missing from font `#{$font}`');
-    }
-    @if $size != null and not map-has-key($size, base) {
-        @include _pickle-error('`base` parameter missing from size `#{$size}`');
+    @if $font != null {
+        @if not map-has-key($font, family) {
+            @include _pickle-error('`family` parameter missing from font `#{$font}`');
+        }
+        @if not map-has-key($font, fallback) {
+            font-family: map-get($font, family);
+        } @else {
+            font-family: map-get($font, family), map-get($font, fallback);
+        }
+        $ratio: map-get($font, ratio);
     }
 
-    $ratio: map-get($font, ratio);
     @if not $ratio {
         $ratio: 1;
     }
 
     @if $size != null {
-        $family: map-get($font, family);
+        @if $size != null and not map-has-key($size, base) {
+            @include _pickle-error('`base` parameter missing from size `#{$size}`');
+        }
+
         $size-base: map-get($size, base);
         $size-breakpoints: map-get($size, breakpoints);
 
-        font-family: $family;
         font-size: $size-base * $ratio;
 
         @if $size-breakpoints {
