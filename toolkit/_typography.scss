@@ -12,6 +12,7 @@
 
     $font: map-get($pickle-fonts, $font);
     $size: map-get($pickle-sizes, $size);
+    $ratio: false;
 
     @if $font != null {
         @if not map-has-key($font, family) {
@@ -22,9 +23,9 @@
         } @else {
             font-family: map-get($font, family), map-get($font, fallback);
         }
+        $ratio: map-get($font, ratio);
     }
 
-    $ratio: map-get($font, ratio);
     @if not $ratio {
         $ratio: 1;
     }

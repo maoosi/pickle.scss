@@ -52,11 +52,6 @@
                 }
             }
 
-            $weight: map-get($font, weight);
-            @if not $weight {
-                $weight: normal;
-            }
-
             @at-root {
                 @font-face {
                     font-family: map-get($font, family);
@@ -66,7 +61,7 @@
                     @if $src2 != '' {
                         src: $src2;
                     }
-                    font-weight: $weight;
+                    font-weight: normal;
                     font-style: normal;
                     font-variant: normal;
                     font-display: swap;

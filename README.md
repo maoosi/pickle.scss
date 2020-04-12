@@ -168,11 +168,17 @@ Not happy with the default? You can update the default `$breakpoints` config wit
 Because colors are an important element of styling, Pickle comes with a way to easily managed colors from a single place, and three different methods to use those within projects:
 
 ```scss
-/* Initiate with colors (optional) */
+/* Initiate with colors */
 @include pickle(
     $colors: (
-        'blue': #0000ff,
-        'darkBlue': darken($pickle-color-blue, 20%)
+        'blue': #0000ff
+    )
+);
+
+/* Inherit from previously declared colors */
+@include pickle(
+    $colors: (
+        'darkBlue': darken(map-get($pickle-colors, 'blue'), 20%)
     )
 );
 
@@ -180,7 +186,6 @@ Because colors are an important element of styling, Pickle comes with a way to e
 @include pickle-color('blue');
 @include pickle-bgcolor('blue');
 map-get($pickle-colors, 'blue');
-$pickle-color-blue
 ```
 
 ### 🔤 Typography
@@ -190,7 +195,7 @@ Pickle proposed approach for typography styles relies on a strong separation of 
 #### Fonts
 
 ```scss
-/* Initiate with fonts (optional) */
+/* Initiate with fonts */
 @include pickle(
     $fonts: (
         // primary font
@@ -204,20 +209,6 @@ Pickle proposed approach for typography styles relies on a strong separation of 
             files: './fonts/Helvetica-Bold.ttf' './fonts/Helvetica-Bold.woff2',
             family: 'HelveticaBold',
             fallback: #{Arial, sans-serif}
-        ),
-        // secondary font
-        'Secondary': (
-            files: './Oswald-Regular.ttf',
-            family: 'Oswald',
-            weight: 400,
-            fallback: #{Arial, sans-serif}
-        ),
-        // secondary font variant using same family name, but different weight
-        'SecondaryBold': (
-            files: './Oswald-Bold.ttf',
-            family: 'Oswald',
-            weight: 700,
-            fallback: #{Arial, sans-serif}
         )
     )
 );
@@ -226,7 +217,7 @@ Pickle proposed approach for typography styles relies on a strong separation of 
 #### Size groups
 
 ```scss
-/* Initiate with sizes (optional) */
+/* Initiate with sizes */
 @include pickle(
     $sizes: (
         'XL': (
@@ -305,17 +296,22 @@ Assuming the above config with `Primary` and `Secondary` fonts using the exact s
 Sometimes it is important to have a central place to manage global styling variables, so Pickle config comes with a `$vars` parameter, allowing to declare and use variables globally.
 
 ```scss
-/* Initiate with vars (optional) */
+/* Initiate with vars */
 @include pickle(
     $vars: (
-        'header-height': 5.5rem,
-        'headerLarge-height': calc($pickle-var-header-height * 2)
+        'header-height': 5.5rem
+    )
+);
+
+/* Inherit from previously declared vars */
+@include pickle(
+    $vars: (
+        'headerLarge-height': calc(#{map-get($pickle-vars, 'header-height')} * 2)
     )
 );
 
 /* Use project vars */
 map-get($pickle-vars, 'header-height');
-$pickle-var-header-height;
 ```
 
 

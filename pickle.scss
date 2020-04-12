@@ -13,14 +13,12 @@
     $sizes: (),
     $vars: ()
 ) {
-    @each $colorName, $colorHex in $colors { #{$pickle-color-$colorName}: $colorHex; }
     @if variable-exists(pickle-colors) {
         $pickle-colors: map-merge($pickle-colors, $colors) !global;
     } @else {
         $pickle-colors: $colors !global;
     }
 
-    @each $varName, $varValue in $vars { #{$pickle-color-$varName}: $varValue; }
     @if variable-exists(pickle-vars) {
         $pickle-vars: map-merge($pickle-vars, $vars) !global;
     } @else {
@@ -40,7 +38,9 @@
     }
 
     @if variable-exists(pickle-breakpoints) {
-        $pickle-breakpoints: map-merge($pickle-breakpoints, $breakpoints) !global;
+        @if $breakpoints {
+            $pickle-breakpoints: map-merge($pickle-breakpoints, $breakpoints) !global;
+        }
     } @else {
         @if $breakpoints {
             $pickle-breakpoints: $breakpoints !global;
