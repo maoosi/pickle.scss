@@ -202,13 +202,13 @@ Pickle proposed approach for typography styles relies on a strong separation of 
         'Primary': (
             files: './fonts/Helvetica.ttf' './fonts/Helvetica.woff2',
             family: 'Helvetica',
-            fallback: #{Arial, sans-serif}
+            suffix: #{Arial, sans-serif}
         ),
         // primary font variant using different family name
         'PrimaryBold': (
             files: './fonts/Helvetica-Bold.ttf' './fonts/Helvetica-Bold.woff2',
             family: 'HelveticaBold',
-            fallback: #{Arial, sans-serif}
+            suffix: #{Arial, sans-serif}
         )
     )
 );

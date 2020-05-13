@@ -1,6 +1,6 @@
 {
 	"name": "pickle.scss",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"dependencies": {},
 	"scripts": {
 		"playground": "vue serve ./playground/Playground.vue --open"

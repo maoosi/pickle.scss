@@ -13,31 +13,31 @@
     $sizes: (),
     $vars: ()
 ) {
-    @if variable-exists(pickle-colors) {
+    @if variable-exists(pickle-colors) and type-of($pickle-colors) == 'map' {
         $pickle-colors: map-merge($pickle-colors, $colors) !global;
     } @else {
         $pickle-colors: $colors !global;
     }
 
-    @if variable-exists(pickle-vars) {
+    @if variable-exists(pickle-vars) and type-of($pickle-vars) == 'map' {
         $pickle-vars: map-merge($pickle-vars, $vars) !global;
     } @else {
         $pickle-vars: $vars !global;
     }
 
-    @if variable-exists(pickle-fonts) {
+    @if variable-exists(pickle-fonts) and type-of($pickle-fonts) == 'map' {
         $pickle-fonts: map-merge($pickle-fonts, $fonts) !global;
     } @else {
         $pickle-fonts: $fonts !global;
     }
 
-    @if variable-exists(pickle-sizes) {
+    @if variable-exists(pickle-sizes) and type-of($pickle-sizes) == 'map' {
         $pickle-sizes: map-merge($pickle-sizes, $sizes) !global;
     } @else {
         $pickle-sizes: $sizes !global;
     }
 
-    @if variable-exists(pickle-breakpoints) {
+    @if variable-exists(pickle-breakpoints) and type-of($pickle-breakpoints) == 'map' {
         @if $breakpoints {
             $pickle-breakpoints: map-merge($pickle-breakpoints, $breakpoints) !global;
         }
