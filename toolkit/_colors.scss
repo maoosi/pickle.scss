@@ -4,7 +4,7 @@
     } @else {
         @include _pickle-error('No color found with name `#{$color}`');
     }
-};
+}
 
 @mixin pickle-bgcolor($color) {
     @if map-has-key($pickle-colors, $color) {
@@ -12,4 +12,4 @@
     } @else {
         @include _pickle-error('No bgcolor found with name `#{$color}`');
     }
-};
+}

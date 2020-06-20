@@ -8,9 +8,10 @@
             /* Page
             * ========================================================================== */
 
-            html, body {
-                font-size: 100%;
+            html,
+            body {
                 overflow-x: hidden;
+                font-size: 100%;
             }
 
             /* Headings
@@ -22,14 +23,13 @@
             h4,
             h5,
             h6 {
-                margin: 0;
                 padding: 0;
-                border: 0;
-                font-size: 100%;
+                margin: 0;
                 font: inherit;
+                font-size: 100%;
                 vertical-align: baseline;
+                border: 0;
             }
-            
         }
     }
 }

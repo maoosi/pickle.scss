@@ -2,7 +2,9 @@
     @if not _pickle-already-injected('pickle-fonts') {
         @each $name, $font in $pickle-fonts {
             @if not map-has-key($font, family) {
-                @include _pickle-error('Font `#{$font}` is missing `family` parameter');
+                @include _pickle-error(
+                    'Font `#{$font}` is missing `family` parameter'
+                );
             }
 
             $src1: '';
@@ -14,19 +16,40 @@
                 @each $file in $files {
                     $parts: _pickle-str-split($file, '.');
                     $extension: nth($parts, length($parts));
-                    $fonts-extensions: append($fonts-extensions, (
-                        'extension': $extension,
-                        'url': $file
-                    ));
+                    $fonts-extensions: append(
+                        $fonts-extensions,
+                        (
+                            'extension': $extension,
+                            'url': $file,
+                        )
+                    );
                 }
 
                 $bp-fontface: (
-                    'eot': ('format': 'embedded-opentype', 'suffix': '?#iefix'),
-                    'woff2': ('format': 'woff2', 'suffix': ''),
-                    'woff': ('format': 'woff', 'suffix': ''),
-                    'otf': ('format': 'opentype', 'suffix': ''),
-                    'ttf': ('format': 'truetype', 'suffix': ''),
-                    'svg': ('format': 'svg', 'suffix': '##{map-get($font, family)}')
+                    'eot': (
+                        'format': 'embedded-opentype',
+                        'suffix': '?#iefix',
+                    ),
+                    'woff2': (
+                        'format': 'woff2',
+                        'suffix': '',
+                    ),
+                    'woff': (
+                        'format': 'woff',
+                        'suffix': '',
+                    ),
+                    'otf': (
+                        'format': 'opentype',
+                        'suffix': '',
+                    ),
+                    'ttf': (
+                        'format': 'truetype',
+                        'suffix': '',
+                    ),
+                    'svg': (
+                        'format': 'svg',
+                        'suffix': '##{map-get($font, family)}',
+                    ),
                 );
 
                 @each $bp-ext, $bp-data in $bp-fontface {
@@ -55,18 +78,18 @@
             @at-root {
                 @font-face {
                     font-family: map-get($font, family);
+                    font-style: normal;
+                    font-weight: normal;
+                    font-variant: normal;
+                    font-display: swap;
                     @if $src1 != '' {
                         src: $src1;
                     }
                     @if $src2 != '' {
                         src: $src2;
                     }
-                    font-weight: normal;
-                    font-style: normal;
-                    font-variant: normal;
-                    font-display: swap;
                 }
             }
         }
     }
-};
+}

@@ -1,0 +1,55 @@
+{
+    // ===
+    // Peacock
+    // ===
+
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#ddefc9",
+        "activityBar.activeBorder": "#6ba2d3",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#6ba2d3",
+        "activityBarBadge.foreground": "#15202b",
+        "titleBar.activeBackground": "#c5e4a1",
+        "titleBar.inactiveBackground": "#c5e4a199",
+        "titleBar.activeForeground": "#15202b",
+        "titleBar.inactiveForeground": "#15202b99",
+        "statusBar.background": "#c5e4a1",
+        "statusBarItem.hoverBackground": "#add979",
+        "statusBar.foreground": "#15202b",
+        "activityBar.activeBackground": "#ddefc9",
+        "statusBar.border": "#c5e4a1",
+        "titleBar.border": "#c5e4a1"
+    },
+    "peacock.color": "#c5e4a1",
+
+    // ===
+    // Spacing
+    // ===
+
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.trimAutoWhitespace": true,
+    "files.trimTrailingWhitespace": true,
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+
+    // ===
+    // Event Triggers
+    // ===
+
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.stylelint": true
+    },
+
+    // ===
+    // CSS
+    // ===
+
+    "stylelint.enable": true,
+    "css.validate": false,
+    "scss.validate": false,
+}

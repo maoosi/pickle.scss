@@ -1,5 +1,4 @@
 @mixin pickle-typo($font: null, $size: null, $lineHeight: null) {
-
     @if $font == null and $size == null {
         @include _pickle-error('Missing `$font` and/or `$size` parameters');
     }
@@ -9,8 +8,13 @@
     @if $size != null and not map-has-key($pickle-sizes, $size) {
         @include _pickle-error('No size found with name `#{$size}`');
     }
-    @if $lineHeight != null and not map-has-key($pickle-lineHeights, $lineHeight) {
-        @include _pickle-error('No lineHeight found with name `#{$lineHeight}`');
+    @if $lineHeight !=
+        null and not
+        map-has-key($pickle-lineHeights, $lineHeight)
+    {
+        @include _pickle-error(
+            'No lineHeight found with name `#{$lineHeight}`'
+        );
     }
 
     $font: map-get($pickle-fonts, $font);
@@ -21,7 +25,9 @@
 
     @if $font != null {
         @if not map-has-key($font, family) {
-            @include _pickle-error('`family` parameter missing from font `#{$font}`');
+            @include _pickle-error(
+                '`family` parameter missing from font `#{$font}`'
+            );
         }
         @if not map-has-key($font, suffix) {
             font-family: map-get($font, family);
@@ -29,7 +35,7 @@
             font-family: map-get($font, family), map-get($font, suffix);
         }
         $ratio: map-get($font, ratio);
-        $textCrop: map-get($font, textCrop);
+        $textCrop: map-get($font, textcrop);
     }
 
     @if not $ratio {
@@ -38,7 +44,9 @@
 
     @if $size != null {
         @if $size != null and not map-has-key($size, base) {
-            @include _pickle-error('`base` parameter missing from size `#{$size}`');
+            @include _pickle-error(
+                '`base` parameter missing from size `#{$size}`'
+            );
         }
 
         $size-base: map-get($size, base);
@@ -57,9 +65,11 @@
 
     @if $font != null and $textCrop != null {
         @if $lineHeight != null and not map-has-key($lineHeight, base) {
-            @include _pickle-error('`base` parameter missing from lineHeight `#{$lineHeight}`');
+            @include _pickle-error(
+                '`base` parameter missing from lineHeight `#{$lineHeight}`'
+            );
         }
-        
+
         @if $lineHeight != null {
             $lineHeight-base: map-get($lineHeight, base);
             $lineHeight-breakpoints: map-get($lineHeight, breakpoints);
@@ -70,20 +80,26 @@
                         @include _pickle-text-crop(
                             $text-crop: $textCrop,
                             $line-height: $font-lineHeight,
-                            $top-adjustment: 0px,
+                            $top-adjustment: 0,
                             $bottom-adjustment: 0px
                         );
                     }
                 }
+            } @else {
+                @include _pickle-text-crop(
+                    $text-crop: $textCrop,
+                    $line-height: $lineHeight-base,
+                    $top-adjustment: 0,
+                    $bottom-adjustment: 0px
+                );
             }
         } @else {
             @include _pickle-text-crop(
                 $text-crop: $textCrop,
                 $line-height: 1.2,
-                $top-adjustment: 0px,
+                $top-adjustment: 0,
                 $bottom-adjustment: 0px
             );
         }
     }
-    
-};
+}

@@ -1,0 +1,15 @@
+{
+    "recommendations": [
+        // Lint-on-save with Stylelint
+        // https://github.com/stylelint/vscode-stylelint
+        "stylelint.vscode-stylelint",
+
+        // SCSS intellisense
+        // https://github.com/mrmlnc/vscode-scss
+        "mrmlnc.vscode-scss",
+
+        // Subtly change the color of your Visual Studio Code workspace
+        // https://github.com/johnpapa/vscode-peacock
+        "johnpapa.vscode-peacock"
+    ]
+}

@@ -6,7 +6,7 @@
     $split-arr: ();
     $index: str-index($string, $separator);
 
-    @while $index !=null {
+    @while $index != null {
         $item: str-slice($string, 1, $index - 1);
         $split-arr: append($split-arr, $item);
         $string: str-slice($string, $index + 1);
@@ -30,36 +30,54 @@ $_pickle-injected: ();
 @mixin _pickle-text-crop(
     $text-crop: null,
     $line-height: 1.2,
-    $top-adjustment: 0px,
+    $top-adjustment: 0,
     $bottom-adjustment: 0px
 ) {
     @if $text-crop {
-        $top-crop: map-get($text-crop, topCrop);
-        $bottom-crop: map-get($text-crop, bottomCrop);
-        $crop-font-size: map-get($text-crop, cropFontSize);
-        $crop-line-height: map-get($text-crop, cropLineHeight);
-    
+        $top-crop: map-get($text-crop, topcrop);
+        $bottom-crop: map-get($text-crop, bottomcrop);
+        $crop-font-size: map-get($text-crop, cropfontsize);
+        $crop-line-height: map-get($text-crop, croplineheight);
+
         // Apply values to calculate em-based margins that work with any font size
-        $dynamic-top-crop: max(($top-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
-        $dynamic-bottom-crop: max(($bottom-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
-    
+        $dynamic-top-crop: max(
+                (
+                    $top-crop +
+                        ($line-height - $crop-line-height) *
+                        ($crop-font-size / 2)
+                ),
+                0
+            ) /
+            $crop-font-size;
+        $dynamic-bottom-crop: max(
+                (
+                    $bottom-crop +
+                        ($line-height - $crop-line-height) *
+                        ($crop-font-size / 2)
+                ),
+                0
+            ) /
+            $crop-font-size;
+
         // Mixin output
         line-height: $line-height;
-    
+
         &::before,
         &::after {
-            content: '';
             display: block;
-            height: 0;
             width: 0;
+            height: 0;
+            content: '';
         }
-    
+
         &::before {
             margin-bottom: calc(-#{$dynamic-top-crop}em + #{$top-adjustment});
         }
-    
+
         &::after {
-            margin-top: calc(-#{$dynamic-bottom-crop}em + #{$bottom-adjustment});
+            margin-top: calc(
+                -#{$dynamic-bottom-crop}em + #{$bottom-adjustment}
+            );
         }
     }
 }

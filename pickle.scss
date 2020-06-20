@@ -11,6 +11,7 @@
     $colors: (),
     $fonts: (),
     $sizes: (),
+    $lineHeights: (),
     $vars: ()
 ) {
     @if variable-exists(pickle-colors) and type-of($pickle-colors) == 'map' {
@@ -37,31 +38,70 @@
         $pickle-sizes: $sizes !global;
     }
 
-    @if variable-exists(pickle-breakpoints) and type-of($pickle-breakpoints) == 'map' {
+    @if variable-exists(pickle-lineHeights) and
+        type-of($pickle-lineHeights) ==
+        'map'
+    {
+        $pickle-lineHeights: map-merge(
+            $pickle-lineHeights,
+            $lineHeights
+        ) !global;
+    } @else {
+        $pickle-lineHeights: $lineHeights !global;
+    }
+
+    @if variable-exists(pickle-breakpoints) and
+        type-of($pickle-breakpoints) ==
+        'map'
+    {
         @if $breakpoints {
-            $pickle-breakpoints: map-merge($pickle-breakpoints, $breakpoints) !global;
+            $pickle-breakpoints: map-merge(
+                $pickle-breakpoints,
+                $breakpoints
+            ) !global;
         }
     } @else {
         @if $breakpoints {
             $pickle-breakpoints: $breakpoints !global;
         } @else {
             $pickle-breakpoints: (
-                'phone-only': (max-width: 599px),
-                'tablet-portrait-up': (min-width: 600px),
-                'tablet-up': (min-width: 900px),
-                'desktop-up': (min-width: 1200px),
-                'big-desktop-up': (min-width: 1800px)
+                'old-mobile-only': (
+                    max-width: 319.99px,
+                ),
+                'mobile-landscape-only': (
+                    max-height: 500px,
+                ),
+                'mobile-up': (
+                    min-width: 320px,
+                ),
+                'mobile-landscape-up': (
+                    min-width: 568px,
+                ),
+                'tablet-portrait-up': (
+                    min-width: 768px,
+                ),
+                'tablet-up': (
+                    min-width: 1024px,
+                ),
+                'laptop-up': (
+                    min-width: 1366px,
+                ),
+                'desktop-up': (
+                    min-width: 1680px,
+                ),
             ) !global;
         }
     }
 }
 
-@mixin pickle-styles(
-    $sanitize: true,
-    $flavors: true,
-    $fonts: true
-) {
-    @if $sanitize { @include _pickle-sanitize; }
-    @if $flavors { @include _pickle-flavors; }
-    @if $fonts { @include _pickle-fonts; }
+@mixin pickle-styles($sanitize: true, $flavors: true, $fonts: true) {
+    @if $sanitize {
+        @include _pickle-sanitize;
+    }
+    @if $flavors {
+        @include _pickle-flavors;
+    }
+    @if $fonts {
+        @include _pickle-fonts;
+    }
 }
