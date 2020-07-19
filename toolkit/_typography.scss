@@ -1,4 +1,4 @@
-@mixin pickle-typo($font: null, $size: null, $lineHeight: null) {
+@mixin pickle-typo($font: null, $size: null, $line-height: null) {
     @if $font == null and $size == null {
         @include _pickle-error('Missing `$font` and/or `$size` parameters');
     }
@@ -8,20 +8,20 @@
     @if $size != null and not map-has-key($pickle-sizes, $size) {
         @include _pickle-error('No size found with name `#{$size}`');
     }
-    @if $lineHeight !=
+    @if $line-height !=
         null and not
-        map-has-key($pickle-lineHeights, $lineHeight)
+        map-has-key($pickle-line-heights, $line-height)
     {
         @include _pickle-error(
-            'No lineHeight found with name `#{$lineHeight}`'
+            'No line-height found with name `#{$line-height}`'
         );
     }
 
     $font: map-get($pickle-fonts, $font);
     $size: map-get($pickle-sizes, $size);
-    $lineHeight: map-get($pickle-lineHeights, $lineHeight);
+    $line-height: map-get($pickle-line-heights, $line-height);
     $ratio: false;
-    $textCrop: false;
+    $textcrop: false;
 
     @if $font != null {
         @if not map-has-key($font, family) {
@@ -35,7 +35,7 @@
             font-family: map-get($font, family), map-get($font, suffix);
         }
         $ratio: map-get($font, ratio);
-        $textCrop: map-get($font, textcrop);
+        $textcrop: map-get($font, textcrop);
     }
 
     @if not $ratio {
@@ -63,23 +63,24 @@
         }
     }
 
-    @if $font != null and $textCrop != null {
-        @if $lineHeight != null and not map-has-key($lineHeight, base) {
+    @if $font != null and $textcrop != null {
+        @if $line-height != null and not map-has-key($line-height, base) {
             @include _pickle-error(
-                '`base` parameter missing from lineHeight `#{$lineHeight}`'
+                '`base` parameter missing from line-height `#{$line-height}`'
             );
         }
 
-        @if $lineHeight != null {
-            $lineHeight-base: map-get($lineHeight, base);
-            $lineHeight-breakpoints: map-get($lineHeight, breakpoints);
+        @if $line-height != null {
+            $line-height-base: map-get($line-height, base);
+            $line-height-breakpoints: map-get($line-height, breakpoints);
 
-            @if $lineHeight-breakpoints {
-                @each $breakpoint, $font-lineHeight in $lineHeight-breakpoints {
+            @if $line-height-breakpoints {
+                @each $breakpoint, $font-line-height in $line-height-breakpoints
+                {
                     @include pickle-respond($breakpoint) {
                         @include _pickle-text-crop(
-                            $text-crop: $textCrop,
-                            $line-height: $font-lineHeight,
+                            $text-crop: $textcrop,
+                            $line-height: $font-line-height,
                             $top-adjustment: 0,
                             $bottom-adjustment: 0px
                         );
@@ -87,15 +88,15 @@
                 }
             } @else {
                 @include _pickle-text-crop(
-                    $text-crop: $textCrop,
-                    $line-height: $lineHeight-base,
+                    $text-crop: $textcrop,
+                    $line-height: $line-height-base,
                     $top-adjustment: 0,
                     $bottom-adjustment: 0px
                 );
             }
         } @else {
             @include _pickle-text-crop(
-                $text-crop: $textCrop,
+                $text-crop: $textcrop,
                 $line-height: 1.2,
                 $top-adjustment: 0,
                 $bottom-adjustment: 0px

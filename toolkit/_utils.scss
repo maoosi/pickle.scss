@@ -18,12 +18,12 @@
     @return $split-arr;
 }
 
-$_pickle-injected: ();
+$pickle-injected: ();
 @function _pickle-already-injected($name) {
-    @if index($_pickle-injected, $name) {
+    @if index($pickle-injected, $name) {
         @return true;
     }
-    $_pickle-injected: append($_pickle-injected, $name) !global;
+    $pickle-injected: append($pickle-injected, $name) !global;
     @return false;
 }
 
@@ -34,10 +34,10 @@ $_pickle-injected: ();
     $bottom-adjustment: 0px
 ) {
     @if $text-crop {
-        $top-crop: map-get($text-crop, topcrop);
-        $bottom-crop: map-get($text-crop, bottomcrop);
-        $crop-font-size: map-get($text-crop, cropfontsize);
-        $crop-line-height: map-get($text-crop, croplineheight);
+        $top-crop: map-get($text-crop, top-crop);
+        $bottom-crop: map-get($text-crop, bottom-crop);
+        $crop-font-size: map-get($text-crop, crop-font-size);
+        $crop-line-height: map-get($text-crop, crop-line-height);
 
         // Apply values to calculate em-based margins that work with any font size
         $dynamic-top-crop: max(

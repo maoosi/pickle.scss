@@ -8,89 +8,143 @@
 
 @mixin pickle(
     $breakpoints: false,
-    $colors: (),
-    $fonts: (),
-    $sizes: (),
-    $lineHeights: (),
-    $vars: ()
+    $colors: false,
+    $fonts: false,
+    $sizes: false,
+    $line-heights: false,
+    $vars: false
 ) {
-    @if variable-exists(pickle-colors) and type-of($pickle-colors) == 'map' {
-        $pickle-colors: map-merge($pickle-colors, $colors) !global;
-    } @else {
-        $pickle-colors: $colors !global;
-    }
-
-    @if variable-exists(pickle-vars) and type-of($pickle-vars) == 'map' {
-        $pickle-vars: map-merge($pickle-vars, $vars) !global;
-    } @else {
-        $pickle-vars: $vars !global;
-    }
-
-    @if variable-exists(pickle-fonts) and type-of($pickle-fonts) == 'map' {
-        $pickle-fonts: map-merge($pickle-fonts, $fonts) !global;
-    } @else {
-        $pickle-fonts: $fonts !global;
-    }
-
-    @if variable-exists(pickle-sizes) and type-of($pickle-sizes) == 'map' {
-        $pickle-sizes: map-merge($pickle-sizes, $sizes) !global;
-    } @else {
-        $pickle-sizes: $sizes !global;
-    }
-
-    @if variable-exists(pickle-lineHeights) and
-        type-of($pickle-lineHeights) ==
+    @if variable-exists(pickle-colors) and
+        type-of($pickle-colors) ==
+        'map' and
+        type-of($colors) ==
         'map'
     {
-        $pickle-lineHeights: map-merge(
-            $pickle-lineHeights,
-            $lineHeights
+        $pickle-colors: map-merge($pickle-colors, $colors) !global;
+    } @else if type-of($colors) == 'map' {
+        $pickle-colors: $colors !global;
+    } @else if not
+        variable-exists(pickle-colors) or not
+        type-of($pickle-colors) ==
+        'map'
+    {
+        $pickle-colors: () !global;
+    }
+
+    @if variable-exists(pickle-vars) and
+        type-of($pickle-vars) ==
+        'map' and
+        type-of($vars) ==
+        'map'
+    {
+        $pickle-vars: map-merge($pickle-vars, $vars) !global;
+    } @else if type-of($vars) == 'map' {
+        $pickle-vars: $vars !global;
+    } @else if not
+        variable-exists(pickle-vars) or not
+        type-of($pickle-vars) ==
+        'map'
+    {
+        $pickle-vars: () !global;
+    }
+
+    @if variable-exists(pickle-fonts) and
+        type-of($pickle-fonts) ==
+        'map' and
+        type-of($fonts) ==
+        'map'
+    {
+        $pickle-fonts: map-merge($pickle-fonts, $fonts) !global;
+    } @else if type-of($fonts) == 'map' {
+        $pickle-fonts: $fonts !global;
+    } @else if not
+        variable-exists(pickle-fonts) or not
+        type-of($pickle-fonts) ==
+        'map'
+    {
+        $pickle-fonts: () !global;
+    }
+
+    @if variable-exists(pickle-sizes) and
+        type-of($pickle-sizes) ==
+        'map' and
+        type-of($sizes) ==
+        'map'
+    {
+        $pickle-sizes: map-merge($pickle-sizes, $sizes) !global;
+    } @else if type-of($sizes) == 'map' {
+        $pickle-sizes: $sizes !global;
+    } @else if not
+        variable-exists(pickle-sizes) or not
+        type-of($pickle-sizes) ==
+        'map'
+    {
+        $pickle-sizes: () !global;
+    }
+
+    @if variable-exists(pickle-line-heights) and
+        type-of($pickle-line-heights) ==
+        'map' and
+        type-of($line-heights) ==
+        'map'
+    {
+        $pickle-line-heights: map-merge(
+            $pickle-line-heights,
+            $line-heights
         ) !global;
-    } @else {
-        $pickle-lineHeights: $lineHeights !global;
+    } @else if type-of($line-heights) == 'map' {
+        $pickle-line-heights: $line-heights !global;
+    } @else if not
+        variable-exists(pickle-line-heights) or not
+        type-of($pickle-line-heights) ==
+        'map'
+    {
+        $pickle-line-heights: () !global;
     }
 
     @if variable-exists(pickle-breakpoints) and
         type-of($pickle-breakpoints) ==
+        'map' and
+        type-of($breakpoints) ==
         'map'
     {
-        @if $breakpoints {
-            $pickle-breakpoints: map-merge(
-                $pickle-breakpoints,
-                $breakpoints
-            ) !global;
-        }
-    } @else {
-        @if $breakpoints {
-            $pickle-breakpoints: $breakpoints !global;
-        } @else {
-            $pickle-breakpoints: (
-                'old-mobile-only': (
-                    max-width: 319.99px,
-                ),
-                'mobile-landscape-only': (
-                    max-height: 500px,
-                ),
-                'mobile-up': (
-                    min-width: 320px,
-                ),
-                'mobile-landscape-up': (
-                    min-width: 568px,
-                ),
-                'tablet-portrait-up': (
-                    min-width: 768px,
-                ),
-                'tablet-up': (
-                    min-width: 1024px,
-                ),
-                'laptop-up': (
-                    min-width: 1366px,
-                ),
-                'desktop-up': (
-                    min-width: 1680px,
-                ),
-            ) !global;
-        }
+        $pickle-breakpoints: map-merge(
+            $pickle-breakpoints,
+            $breakpoints
+        ) !global;
+    } @else if type-of($breakpoints) == 'map' {
+        $pickle-breakpoints: $breakpoints !global;
+    } @else if not
+        variable-exists(pickle-breakpoints) or not
+        type-of($pickle-breakpoints) ==
+        'map'
+    {
+        $pickle-breakpoints: (
+            'old-mobile-only': (
+                max-width: 319.99px,
+            ),
+            'mobile-landscape-only': (
+                max-height: 500px,
+            ),
+            'mobile-up': (
+                min-width: 320px,
+            ),
+            'mobile-landscape-up': (
+                min-width: 568px,
+            ),
+            'tablet-portrait-up': (
+                min-width: 768px,
+            ),
+            'tablet-up': (
+                min-width: 1024px,
+            ),
+            'laptop-up': (
+                min-width: 1366px,
+            ),
+            'desktop-up': (
+                min-width: 1680px,
+            ),
+        ) !global;
     }
 }
 

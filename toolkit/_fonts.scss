@@ -7,8 +7,8 @@
                 );
             }
 
-            $src1: '';
-            $src2: 'local("☺︎")';
+            $src-one: '';
+            $src-two: 'local("☺︎")';
 
             @if map-has-key($font, files) {
                 $files: map-get($font, files);
@@ -62,13 +62,13 @@
 
                         @if $bp-ext == $extension {
                             @if $bp-ext == 'eot' {
-                                @if not $src1 == '' {
-                                    $src1: #{'#{$src1}, url("#{$url}#{$bp-suffix}") format("#{$bp-format}")'};
+                                @if not $src-one == '' {
+                                    $src-one: #{'#{$src-one}, url("#{$url}#{$bp-suffix}") format("#{$bp-format}")'};
                                 } @else {
-                                    $src1: #{'url("#{$url}#{$bp-suffix}") format("#{$bp-format}")'};
+                                    $src-one: #{'url("#{$url}#{$bp-suffix}") format("#{$bp-format}")'};
                                 }
                             } @else {
-                                $src2: #{'#{$src2}, url("#{$url}#{$bp-suffix}") format("#{$bp-format}")'};
+                                $src-two: #{'#{$src-two}, url("#{$url}#{$bp-suffix}") format("#{$bp-format}")'};
                             }
                         }
                     }
@@ -82,11 +82,11 @@
                     font-weight: normal;
                     font-variant: normal;
                     font-display: swap;
-                    @if $src1 != '' {
-                        src: $src1;
+                    @if $src-one != '' {
+                        src: $src-one;
                     }
-                    @if $src2 != '' {
-                        src: $src2;
+                    @if $src-two != '' {
+                        src: $src-two;
                     }
                 }
             }
